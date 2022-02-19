@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.config.FundraisingMapper">
+	<select id="selectAllNow" resultType="NowDTO">
+		select * 
+		from kakao_now
+		order by nidx desc
+	</select>
+	
+	<select id="countAllNow" resultType="int">
+		select count(*)
+		from kakao_now
+	</select>
+</mapper>
+
+
+
+

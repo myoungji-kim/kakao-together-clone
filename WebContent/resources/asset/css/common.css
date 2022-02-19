@@ -1,0 +1,367 @@
+@charset "UTF-8";
+@import url('./Kakao.css');
+
+
+a { text-decoration: none; color: black; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: KakaoLight;
+}
+
+ul {
+   list-style:none;
+   margin: 0px auto;
+   padding-inline-start: 0px;
+}
+
+li {
+	display: inline-block;
+}
+
+input {
+	font-style: normal;
+	border: none;
+}
+
+#top_wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffffe6;
+}
+
+#wrap_logo {
+	position: absolute;
+	width: 115px;
+	height: 70px;
+	left: 45px;
+}
+
+#wrap_logo img {
+	width: 100%;
+}
+
+#wrap_topCate {
+    display: block;
+    position: relative;
+    width: 412px;
+    height: 46px;
+    margin: 0 auto;
+    padding: 20px 0 0;
+}
+
+#wrap_topCate .inner {}
+	
+#wrap_topCate .inner li {
+    float: left;
+    position: relative;
+    height: 31px;
+    padding: 0 22px 0 21px;
+}
+
+#wrap_topCate .inner li span {
+	font-size: 18px;
+    font-family: KakaoBold;
+    color: #444;
+    text-decoration: none;
+}
+
+#wrap_topCate .inner li span.on {
+    color: #dc287c;
+}
+
+#wrap_util {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#wrap_util .link_util {
+	float: left;
+    position: relative;
+    width: 70px;
+    height: 34px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#wrap_util .link_fund {
+	margin-top: 18px;
+    margin-left: 13px;
+    border: 1px solid #444;
+    background-color: #444;
+}
+
+#wrap_util .link_login {
+    margin: 18px 2px 0 5px;
+    border: 1px solid #e7e7e7;
+    color: #444;
+}
+
+#wrap_util .btn_search {
+    float: left;
+    position: relative;
+    width: 71px;
+    vertical-align: top;
+}
+
+#wrap_util .ico_search {
+    width: 25px;
+    height: 26px;
+    margin: 2px 0 0 10px;
+    background-position: -492px -511px;
+}
+
+
+
+
+
+
+
+#contents {
+	padding-top:70px;
+}
+
+#wrap_tab {
+	position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: #f7f8f9;
+}
+
+#wrap_tab .list_tab {
+    overflow: hidden;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 185px;
+    box-sizing: border-box;
+}
+
+#wrap_tab .list_tab li {
+	width: 33.33%;
+	float: left;
+    width: 210px;
+    text-align: center;
+}
+
+
+#wrap_tab .list_tab li a {
+    display: block;
+    height: 60px;
+    font-size: 15px;
+    color: #444;
+    font-family: KakaoBold;
+}
+
+#wrap_tab .list_tab li a span {
+    display: inline-block;
+    position: relative;
+    height: 60px;
+    padding: 18px 16px 0;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+#wrap_tab .list_tab li a .on {
+    width: 45%;
+    border-bottom: 1px solid #121212;
+}
+
+
+
+
+.group_catelist {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.group_catelist .inner_catelist {
+	display:inline-block;
+}
+
+.group_catelist .inner_catelist ul {
+    overflow: hidden;
+    padding: 57px 17px 48px;
+    text-align: center;
+}
+
+.group_catelist .inner_catelist li {
+    float: left;
+    width: 80px;
+}
+
+.group_catelist .inner_catelist a {
+	display: block;
+	filter: grayscale(100%); 
+}
+
+/* 컬러이미지 */
+.group_catelist .inner_catelist a.on{
+	filter: grayscale(0%); 
+	font-family: KakaoBold;
+}
+
+.group_catelist .inner_catelist img {
+	display: block;
+	width: 34px;
+	height: 34px;
+	margin: 0px auto;
+	
+}
+
+.group_catelist .inner_catelist span {
+	display: block;
+	padding-top: 15px;
+	font-size: 15px;
+}
+
+
+.group_fundlist {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto 100px;
+}
+
+.group_fundlist .sort_cate {
+	text-align: right;
+}
+
+.group_fundlist .sort_cate .inner_sort_cate {
+	padding-right: 16px;
+	display: inline-block;
+}
+
+.group_fundlist .sort_cate .box_sorting {
+	margin-left: 27px;
+	float: left;
+	font-size: 18px;
+    padding-left: 19px;
+    color: #aaa;
+    font-family: KakaoBold;
+    cursor: pointer;
+}
+
+.group_fundlist .sort_cate .box_sorting.on {
+	color: #444;
+}
+
+
+
+.group_fundlist .list_fund {
+	overflow: hidden;
+}
+
+.group_fundlist .list_fund li {
+    float: left;
+    position: relative;
+    width: 236px;
+    margin: 41px 0 0 18px;
+}
+
+.group_fundlist .list_fund .link_content {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.group_fundlist .link_content .img_box {
+    display: block;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.group_fundlist .link_content .img_box img {
+	overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 133px;
+    border-radius: 15px;
+}
+
+.group_fundlist .link_content .text_box {
+	display: block;
+	font-family: KakaoLight;
+    position: relative;
+    height: 137px;
+    padding-top: 15px;
+    color: #666;
+    background-color: #fff;
+    vertical-align: bottom;
+    white-space: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.group_fundlist .text_box .title {
+	display: block;
+	overflow: hidden;
+    max-height: 50px;
+    font-size: 17px;
+    line-height: 25px;
+    text-overflow: ellipsis;
+}
+
+.group_fundlist .text_box .agency {
+	display: block;
+    overflow: hidden;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #999;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.group_fundlist .text_box .state {
+	float: left;
+    position: relative;
+    width: 45%;
+    height: 2px;
+    margin-top: 24px;
+}
+
+.group_fundlist .text_box .state .state_ing {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #e35396;
+}
+
+.group_fundlist .text_box .state .state_bar {
+	display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #ebebeb;
+}
+
+.group_fundlist .text_box .price_goal {
+	display: block;
+    font-size: 15px;
+    color: #444;
+    font-family: KakaoBold;
+    text-align: right;
+    overflow: hidden;
+    margin: 14px 0 0 2px;
+    padding: 0 7px 0 4px;
+    line-height: 18px;
+}
