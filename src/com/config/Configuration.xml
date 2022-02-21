@@ -11,6 +11,7 @@
   <!-- DTO에 별칭 -->
   <typeAliases>
     <typeAlias type="com.dto.fundraising.NowDTO" alias="NowDTO"/>
+    <typeAlias type="com.dto.member.MemberDTO" alias="MemberDTO"/>
   </typeAliases>
   	
   <environments default="development">
@@ -26,5 +27,6 @@
   </environments>
   <mappers>
     <mapper resource="com/config/FundraisingMapper.xml"/>
+    <mapper resource="com/config/MemberMapper.xml"/>
   </mappers>
 </configuration>

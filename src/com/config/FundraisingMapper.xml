@@ -3,10 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.config.FundraisingMapper">
-	<select id="selectAllNow" resultType="NowDTO">
+	<select id="selectAllNow" parameterType="string" resultType="NowDTO">
+		select * 
+		from kakao_now 
+		order by nidx ${sort} 
+	</select>
+	
+	<select id="selectTopicNow" parameterType="map" resultType="NowDTO">
 		select * 
 		from kakao_now
-		order by nidx desc
+		where ntopic = #{topic}
+		order by nidx ${sort}
 	</select>
 	
 	<select id="countAllNow" resultType="int">

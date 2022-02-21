@@ -7,13 +7,13 @@
 	<div id="wrap_tab">
 		<ul class="list_tab">
 			<li>
-				<a href="/fundraising/now?sort=1"><span <c:if test="${url eq '/main' or fn:contains(url, '/fundraising/now')}"> class="on"</c:if>>모금중</span></a>
+				<a href="/promotion"><span <c:if test="${param.phase==null}"> class="on"</c:if>>전체</span></a>
 			</li>
 			<li>
-				<a href="/Error404"><span <c:if test="${fn:contains(url, '/fundraising/epilogue')}"> class="on"</c:if>>모금후기</span></a>
+				<a href="/promotion?phase=2"><span <c:if test="${param.phase==2}"> class="on"</c:if>>진행중</span></a>
 			</li>
 			<li>
-				<a href="/Error404"><span>나눔캠페인</span></a>
+				<a href="/promotion?phase=3"><span <c:if test="${param.phase==3}"> class="on"</c:if>>종료</span></a>
 			</li>
 		</ul>
 	</div> <!-- end wrap_tab -->

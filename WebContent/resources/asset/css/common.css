@@ -8,6 +8,9 @@ a:hover { text-decoration: none; }
 a:focus { text-decoration: none; }
 a:hover, a:active { text-decoration: none; }
 
+input {font-family: KakaoLight; color:#222; font-size: 18px;}
+input:focus {outline:none; color:#222;}
+
 body {
     margin: 0;
     padding: 0;
@@ -269,7 +272,7 @@ input {
     float: left;
     position: relative;
     width: 236px;
-    margin: 41px 0 0 18px;
+    margin: 30px 0 0 13px;
 }
 
 .group_fundlist .list_fund .link_content {
@@ -286,6 +289,7 @@ input {
 }
 
 .group_fundlist .link_content .img_box img {
+	object-fit: cover;
 	overflow: hidden;
     position: relative;
     width: 100%;
@@ -365,3 +369,282 @@ input {
     padding: 0 7px 0 4px;
     line-height: 18px;
 }
+
+
+
+
+
+
+#page_login {
+	padding-top: 150px;
+	margin: 0px auto;
+}
+
+#page_login #main {
+	margin: 0px auto;
+    max-width: 450px;
+	min-height: 545px;
+    padding: 60px 70px 50px;
+    font-family: KakaoLight;
+}
+
+#page_login #main .title {
+	margin-bottom: 30px;
+	color: #444;
+	font-size: 30px;	
+}
+
+#page_login #main .title .bold {
+	font-family: KakaoBold;	
+}
+
+#page_login #main .title .light {
+	display: block;
+	margin: 2px 0px;
+}
+
+#page_login #login_form {
+	margin: 0;
+	padding: 0;
+}
+
+#login_form .item_box {
+	position: relative;
+    padding-right: 0;
+}
+
+#login_form .item_box div {
+    width: 100%;
+    height: 47px;
+    line-height: 47px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #F0F0F0;
+}
+
+
+
+#login_form .item_box input[type=text] {
+    display: block;
+    overflow: hidden;
+    width: 90%;
+    height: 46px;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+#login_form .wrap_btn .submit_box {
+	display: block;
+	margin: 35px 0px 20px;
+	padding: 15px 0px;
+	background-color: #fee500;
+	text-align: center;
+	font-size: 16px;
+	border-radius: 4px;
+	color: #333;
+	cursor: pointer;
+}
+
+#login_form .wrap_btn .line_or {
+	position: relative;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+#login_form .wrap_btn .lineL {
+    display: inline-block;
+    float: left;
+    width: 43%;
+    height: 0.1px;
+    margin: 8px 0;
+    background-color: #777;
+    vertical-align: top;
+    content: '';
+}
+
+
+#login_form .wrap_btn .lineR {
+    display: inline-block;
+    float: right;
+    width: 43%;
+    height: 0.1px;
+    margin: 8px 0;
+    background-color: #777;
+    vertical-align: top;
+    content: '';
+}
+
+#login_form .wrap_btn .txt_or {
+	display: inline-block;
+    width: 14%;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+    color: #909090;
+}
+
+
+
+
+
+#page_join {
+	padding-top: 70px;
+	margin: 0px auto;
+}
+
+#page_join #main {
+	margin: 0px auto;
+    max-width: 550px;
+    min-width: 500px;
+	min-height: 545px;
+    padding: 60px 70px 50px;
+    font-family: KakaoLight;
+}
+
+#page_join #main .title {
+	margin-bottom: 30px;
+	color: #444;
+	font-size: 30px;	
+}
+
+#page_join #main .title .bold {
+	font-family: KakaoBold;	
+}
+
+#page_join #main .title .light {
+	display: block;
+	margin: 2px 0px;
+}
+
+#page_join #main .join_table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#page_join #main .join_table .item_th {
+	padding: 15px 0px;
+	width: 100px;
+	color: #444;
+}
+
+#page_join #main .join_table .item_th div {
+    margin-top: 20px;
+}
+
+.join_table .item_box div {
+    width: 100%;
+    height: 50px;
+    line-height: 47px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #F0F0F0;
+}
+
+.join_table .item_box input[type=text] {
+    display: block;
+    overflow: hidden;
+    width: 90%;
+    height: 49px;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.join_table .id_check {
+	display: inline-block;
+	padding: 6px 13px;
+	color: #CA3433;
+	margin-bottom: 10px;
+}
+
+
+.join_table .pw_check {
+	display: inline-block;
+	padding: 6px 13px;
+	color: #CA3433;
+	margin-bottom: 10px;
+}
+
+#join_form .td_addr input[type=text] {
+	padding: 8px 5px;
+	width: 65%;
+	height: 40px;
+    line-height: 47px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #F0F0F0;
+}
+
+#join_form .td_addr input[type=button] {
+	float: right;
+    padding: 7px 10px;
+    margin-top: 8px;
+    border-radius: 5px;
+}
+
+#join_form .td_phone select {
+    margin-top: 20px;
+    height: 40px;
+    font-family: KakaoLight;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 16px;
+    color: #444;
+}
+
+#join_form .td_phone .link {
+	display: inline-block;
+	margin: auto 5px;
+}
+
+#join_form .td_phone input[type=text]{
+	width: 100px;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 3%;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #F0F0F0;
+}
+
+#join_form .td_email input[type=text]{
+	width: 110px;
+	overflow: hidden;
+    height: 40px;
+    padding: 0 3%;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #F0F0F0;
+}
+
+#join_form .td_email select {
+	margin-top: 20px;
+    height: 40px;
+    font-family: KakaoLight;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    color: #444;
+}
+
+
+#join_form .wrap_btn .submit_box {
+	display: block;
+	margin: 35px 0px 20px;
+	padding: 15px 0px;
+	background-color: #fee500;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 4px;
+	color: #333;
+	cursor: pointer;
+}
+
+

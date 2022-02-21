@@ -1,6 +1,7 @@
 package com.service.fundraising;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -11,12 +12,25 @@ import com.dto.fundraising.NowDTO;
 public class NowServiceImpl implements NowService {
 
 	@Override
-	public List<NowDTO> selectAllNow() {
+	public List<NowDTO> selectAllNow(String sort) throws Exception {
 		List<NowDTO> list = null;
 		SqlSession session = MySqlSessionFactory.getSession();
 		try {
 			NowDAO dao = new NowDAO();
-			list = dao.selectAllNow(session);
+			list = dao.selectAllNow(session, sort);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	@Override
+	public List<NowDTO> selectTopicNow(Map<String, Object> map) throws Exception {
+		List<NowDTO> list = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			NowDAO dao = new NowDAO();
+			list = dao.selectTopicNow(session, map);
 		} finally {
 			session.close();
 		}

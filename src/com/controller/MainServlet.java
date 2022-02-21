@@ -16,18 +16,17 @@ import com.service.fundraising.NowServiceImpl;
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String next = "";
+		String sort = "desc";
 		NowService service = new NowServiceImpl();
 		try {
-//			int test = service.countAllNow();
-			List<NowDTO> list = service.selectAllNow();
+			List<NowDTO> list = service.selectAllNow(sort);
 			request.setAttribute("nowList", list);
 			next = "main.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Main 요청시 예외 발생");
-			next = "error/error.jsp";
+			next = "/error/500error.jsp";
 		}
 		
 		request.getRequestDispatcher(next).forward(request, response);
