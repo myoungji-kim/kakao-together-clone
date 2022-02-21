@@ -17,7 +17,7 @@ public class LogoutActionServlet extends HttpServlet {
 			next = "member/sessionInvalidate.jsp";
 		} else {
 			session.invalidate();
-			next = "/main";
+			next = "member/logoutSuccess.jsp";
 		}
 		response.sendRedirect(next);
 	}

@@ -36,6 +36,32 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return num;
 	}
+	
+	@Override
+	public MemberDTO selectForMypage(int idx) throws Exception {
+		MemberDTO dto = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			MemberDAO dao = new MemberDAO();
+			dto = dao.selectForMypage(session, idx);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	
+	@Override
+	public MemberDTO login(Map<String, Object> map) throws Exception {
+		MemberDTO dto = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			MemberDAO dao = new MemberDAO();
+			dto = dao.login(session, map);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 
 	@Override
 	public MemberDTO idDuplicateCheck(String userid) throws Exception {
@@ -48,6 +74,20 @@ public class MemberServiceImpl implements MemberService {
 			session.close();
 		}
 		return dto;
+	}
+
+	@Override
+	public int updateMember(MemberDTO dto) throws Exception {
+		int num = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			MemberDAO dao = new MemberDAO();
+			num = dao.updateMember(session, dto);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
 	}
 
 }

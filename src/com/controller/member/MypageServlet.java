@@ -2,7 +2,6 @@ package com.controller.member;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,34 +14,29 @@ import com.dto.member.MemberDTO;
 import com.service.member.MemberService;
 import com.service.member.MemberServiceImpl;
 
-@WebServlet("/login.action")
-public class LoginActionServlet extends HttpServlet {
+@WebServlet("/mypage")
+public class MypageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userid = request.getParameter("userid");
-		String passwd = request.getParameter("passwd");
+		
+		HttpSession session = request.getSession();
+		MemberDTO dto = (MemberDTO) session.getAttribute("member");
 		String next = "";
 		
-		MemberService service = new MemberServiceImpl();
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("userid", userid);
-		map.put("passwd", passwd);
-		
-		try {
-			MemberDTO dto = service.login(map);
-			if (dto == null) {
-				next = "/member/loginFail.jsp";
-			} else {
-				HttpSession session = request.getSession();
-				session.setAttribute("member", dto);
-				next = "/main";
+		if (dto != null) {
+			MemberService service = new MemberServiceImpl();
+			try {
+				MemberDTO mypageDto = service.selectForMypage(dto.getIdx());
+				session.setAttribute("member", mypageDto);
+				next = "/member/mypage.jsp";
+			} catch (Exception e) {
+				next = "/Error500";
+				e.printStackTrace();
 			}
-			
-		} catch (Exception e) {
-			next = "/Error500";
-			e.printStackTrace();
+		} else {
+			next = "/member/sessionInvalidate.jsp";
 		}
-		response.sendRedirect(next);
+		
+		request.getRequestDispatcher(next).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

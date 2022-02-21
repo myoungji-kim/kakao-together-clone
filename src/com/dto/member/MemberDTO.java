@@ -1,6 +1,7 @@
 package com.dto.member;
 
 public class MemberDTO {
+	int idx;
 	String userid;
 	String passwd;
 	String username;
@@ -12,9 +13,28 @@ public class MemberDTO {
 	String post;
 	String addr1;
 	String addr2;
+	String joindate;
 	
 	public MemberDTO() {}
 	
+	// All Data
+	public MemberDTO(int idx, String userid, String passwd, String username, String phone1, String phone2,
+			String phone3, String email1, String email2, String post, String addr1, String addr2, String joindate) {
+		this.idx = idx;
+		this.userid = userid;
+		this.passwd = passwd;
+		this.username = username;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
+		this.email1 = email1;
+		this.email2 = email2;
+		this.post = post;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.joindate = joindate;
+	}
+
 	public MemberDTO(String userid, String passwd, String username, String phone1, String phone2,
 			String phone3, String email1, String email2, String post, String addr1, String addr2) {
 		this.userid = userid;
@@ -29,7 +49,36 @@ public class MemberDTO {
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 	}
+	
+	// 마이페이지 정보 수정용 생성자
+	public MemberDTO(int idx, String phone1, String phone2, String phone3, String email1, String email2, String post,
+			String addr1, String addr2) {
+		this.idx = idx;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
+		this.email1 = email1;
+		this.email2 = email2;
+		this.post = post;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+	}
 
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
 
 	public String getUserid() {
 		return userid;

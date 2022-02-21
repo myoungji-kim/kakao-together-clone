@@ -36,5 +36,18 @@ public class NowServiceImpl implements NowService {
 		}
 		return list;
 	}
+
+	@Override
+	public NowDTO selectNowContent(String ncode) throws Exception {
+		NowDTO dto = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			NowDAO dao = new NowDAO();
+			dto = dao.selectNowContent(session, ncode);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 	
 }

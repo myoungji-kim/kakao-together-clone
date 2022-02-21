@@ -15,4 +15,8 @@ public class NowDAO {
 	public List<NowDTO> selectTopicNow(SqlSession session, Map<String, Object> map) throws Exception {
 		return session.selectList("com.config.FundraisingMapper.selectTopicNow", map);
 	}
+	
+	public NowDTO selectNowContent(SqlSession session, String ncode) throws Exception {
+		return session.selectOne("com.config.FundraisingMapper.selectNowContent", ncode);
+	}
 }

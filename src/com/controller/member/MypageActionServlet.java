@@ -11,13 +11,11 @@ import com.dto.member.MemberDTO;
 import com.service.member.MemberService;
 import com.service.member.MemberServiceImpl;
 
-@WebServlet("/join.action")
-public class JoinActionServlet extends HttpServlet {
+@WebServlet("/mypage.action")
+public class MypageActionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String next = "";
-		String username = request.getParameter("username");
-		String userid = request.getParameter("userid");
-		String passwd = request.getParameter("passwd");
+		String idx = request.getParameter("idx");
 		String post = request.getParameter("post");
 		String addr1 = request.getParameter("addr1");
 		String addr2 = request.getParameter("addr2");
@@ -28,10 +26,10 @@ public class JoinActionServlet extends HttpServlet {
 		String email2 = request.getParameter("email2");
 		
 		MemberService service = new MemberServiceImpl();
-		MemberDTO dto = new MemberDTO(userid, passwd, username, phone1, phone2, phone3, email1, email2, post, addr1, addr2);
+		MemberDTO dto = new MemberDTO(Integer.parseInt(idx), phone1, phone2, phone3, email1, email2, post, addr1, addr2);
 		try {
-			int num = service.insertMember(dto);
-			next = "/member/joinSuccess.jsp";
+			int num = service.updateMember(dto);
+			next = "/member/updateSuccess.jsp";
 		} catch (Exception e) {
 			next = "/Error500";
 			e.printStackTrace();
@@ -40,6 +38,7 @@ public class JoinActionServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 
