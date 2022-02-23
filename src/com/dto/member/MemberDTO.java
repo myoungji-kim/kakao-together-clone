@@ -35,6 +35,7 @@ public class MemberDTO {
 		this.joindate = joindate;
 	}
 
+	// 회원가입용 생성자
 	public MemberDTO(String userid, String passwd, String username, String phone1, String phone2,
 			String phone3, String email1, String email2, String post, String addr1, String addr2) {
 		this.userid = userid;
@@ -168,12 +169,12 @@ public class MemberDTO {
 		this.addr2 = addr2;
 	}
 
-
 	@Override
 	public String toString() {
-		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username
+		return "MemberDTO [idx=" + idx + ", userid=" + userid + ", passwd=" + passwd + ", username=" + username
 				+ ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", email1=" + email1
-				+ ", email2=" + email2 + ", post=" + post + ", addr1=" + addr1 + ", addr2=" + addr2 + "]";
-	};
+				+ ", email2=" + email2 + ", post=" + post + ", addr1=" + addr1 + ", addr2=" + addr2 + ", joindate="
+				+ joindate + "]";
+	}
 	
 }

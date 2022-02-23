@@ -18,28 +18,24 @@ import com.service.member.MemberServiceImpl;
 public class MypageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO) session.getAttribute("member");
 		String next = "";
-		
-		if (dto != null) {
-			MemberService service = new MemberServiceImpl();
-			try {
-				MemberDTO mypageDto = service.selectForMypage(dto.getIdx());
-				session.setAttribute("member", mypageDto);
-				next = "/member/mypage.jsp";
-			} catch (Exception e) {
-				next = "/Error500";
-				e.printStackTrace();
-			}
-		} else {
-			next = "/member/sessionInvalidate.jsp";
+		HttpSession session = request.getSession();
+		MemberDTO loginDTO = (MemberDTO) session.getAttribute("login");
+		MemberService service = new MemberServiceImpl();
+		try {
+			MemberDTO mypageDto = service.selectForMypage(loginDTO.getIdx());
+			session.setAttribute("member", mypageDto);
+			next = "/mypage.jsp";
+		} catch (Exception e) {
+			next = "/Error500";
+			e.printStackTrace();
 		}
 		
 		request.getRequestDispatcher(next).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 

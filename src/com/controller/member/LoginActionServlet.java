@@ -34,7 +34,7 @@ public class LoginActionServlet extends HttpServlet {
 				next = "/member/loginFail.jsp";
 			} else {
 				HttpSession session = request.getSession();
-				session.setAttribute("member", dto);
+				session.setAttribute("login", dto);
 				next = "/main";
 			}
 			
@@ -46,6 +46,7 @@ public class LoginActionServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 

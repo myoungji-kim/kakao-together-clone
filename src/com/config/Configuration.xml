@@ -10,7 +10,9 @@
   
   <!-- DTO에 별칭 -->
   <typeAliases>
+  	<typeAlias type="com.dto.fundraising.PromDTO" alias="PromDTO"/>
     <typeAlias type="com.dto.fundraising.NowDTO" alias="NowDTO"/>
+    <!-- <typeAlias type="com.dto.fundraising.EpilDTO" alias="EpilDTO"/> -->
     <typeAlias type="com.dto.member.MemberDTO" alias="MemberDTO"/>
   </typeAliases>
   	
@@ -26,7 +28,9 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/config/FundraisingMapper.xml"/>
+  	<!-- <mapper resource="com/config/PromMapper.xml"/>
+  	<mapper resource="com/config/EpilMapper.xml"/> -->
+    <mapper resource="com/config/NowMapper.xml"/>
     <mapper resource="com/config/MemberMapper.xml"/>
   </mappers>
 </configuration>

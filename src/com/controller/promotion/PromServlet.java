@@ -1,4 +1,4 @@
-package com.controller.member;
+package com.controller.promotion;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/join")
-public class JoinServlet extends HttpServlet {
+@WebServlet("/prom")
+public class PromServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/member/join.jsp").forward(request, response);
+		request.getRequestDispatcher("/promotion.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 
