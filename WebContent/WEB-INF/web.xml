@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  	<!-- filter 등록 -->
+  	<!-- 한글 설정 Filter -->
 	<filter>
 		<filter-name>EncodingFilter</filter-name>
 		<filter-class>com.filter.EncodingFilter</filter-class>
@@ -8,6 +8,18 @@
 	
 	<filter-mapping>
 		<filter-name>EncodingFilter</filter-name>
-		<url-pattern>/</url-pattern>  <!-- url-pattern 안에 있는 경로, 파일을 실행했을 때만 필터를 적용시키겠다는 의미 -->
+		<url-pattern>/</url-pattern> <!-- 왜 깨지지 ..? -->
+	</filter-mapping>
+	
+	<!-- 로그인 세션 체크 Filter -->
+	<filter>
+		<filter-name>LoginSessionFilter</filter-name>
+		<filter-class>com.filter.LoginSessionFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>LoginSessionFilter</filter-name>
+		<url-pattern>/mypage/*</url-pattern>
+		<url-pattern>/write</url-pattern>
 	</filter-mapping>
 </web-app>

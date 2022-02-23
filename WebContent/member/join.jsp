@@ -29,7 +29,7 @@
 		}
 		
 		// 아이디
-		if ($('[name=id_check_result]').val()=="false") mesg = "아이디, "+mesg;
+		if (!$('[name=id_check_result]').val()) mesg = "아이디, "+mesg;
 		
 		// 이름
 		if ($('[name=username]').val()=="")	mesg = "이름, "+mesg;
@@ -37,7 +37,6 @@
 		
 		// Submit
 		if (mesg == "") {
-			alert("회원가입이 완료되었습니다.");
 			$('[name=joinForm]').submit();
 		} else {
 			mesg = mesg.slice(0, -2);

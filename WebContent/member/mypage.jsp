@@ -23,7 +23,6 @@
 
 		// Submit
 		if (mesg == "") {
-			alert("정보수정이 완료되었습니다.");
 			$('[name=joinForm]').submit();
 		} else {
 			mesg = mesg.slice(0, -2);
@@ -38,11 +37,7 @@
 	}
 </script>
 
-<div id="top_wrap"><div id="wrap_logo">
-	<a class="mainLogo" href="/main"><img src="${imgSrc}/tit_blacklogo_190212.png"></a>
-</div></div>
-
-<div id="page_join">
+<div id="page_join" style="padding-top:0px">
 	<div id="main">
 		<div class="title">
 			<span class="light"> 회원정보 수정 </span>

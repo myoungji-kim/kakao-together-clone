@@ -8,24 +8,25 @@
 	<div id="wrap_logo">
 		<a class="mainLogo" href="/main"><img src="${imgSrc}/tit_blacklogo_190212.png"></a>
 	</div>
+	<c:if test="${not fn:contains(url, '/mypage')}">
 	<nav id="wrap_topCate" class="" style="position: static; top: initial;">
 		<ul class="inner">
 			<li>
-				<a href="/fundraising/now">
-				<c:if test="${url eq '/main' or fn:contains(url, '/fundraising')}">
+				<a href="/fund/now">
+				<c:if test="${url eq '/main' or fn:contains(url, '/fund')}">
 					<span class="on">같이기부</span></a>
 				</c:if>
-				<c:if test="${url ne '/main' and not fn:contains(url, '/fundraising')}">
+				<c:if test="${url ne '/main' and not fn:contains(url, '/fund')}">
 					<span>같이기부</span>
 				</c:if>
 				</a>
 			</li>
 			<li>
-				<c:if test="${fn:contains(url, '/promotion')}">
+				<c:if test="${fn:contains(url, '/prom')}">
 					<a><span class="on">프로모션</span></a>
 				</c:if>
-				<c:if test="${not fn:contains(url, '/promotion')}">
-					<a href="/promotion"><span>프로모션</span></a>
+				<c:if test="${not fn:contains(url, '/prom')}">
+					<a href="/prom"><span>프로모션</span></a>
 				</c:if>
 			</li>
 			<li>
@@ -36,12 +37,13 @@
 			</li>
 		</ul>
 	</nav>
+	
 	<nav id="wrap_util">
 		<ul class="inner">
 		
 			<%
-				MemberDTO dto = (MemberDTO) session.getAttribute("member");
-				if (dto == null){
+				MemberDTO loginDTO = (MemberDTO) session.getAttribute("login");
+				if (loginDTO == null){
 			%>
 			<li>
 				<a class="link_util link_fund" href="/join"">회원가입</a>
@@ -61,10 +63,10 @@
 				<a class="link_util link_login" href="/logout.action">로그아웃</a>
 			</li>
 			<% } %>
-			
 			<li>
 				<a class="btn_search" href="/Error404"><span class="ico_search"><img src="${imgSrc}/ico_search_01.svg"></span></a>
 			</li>
 		</ul>
 	</nav>
+	</c:if>
 </div>
