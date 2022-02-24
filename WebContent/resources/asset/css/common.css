@@ -918,7 +918,7 @@ input {
 }
 
 #wrap_write .wrap_btn {
-	margin: 0px auto;
+	margin: 0px auto 50px;
     width: 800px;
     padding: 0px 70px 20px 20px;
 }
@@ -935,6 +935,17 @@ input {
     cursor: pointer;
 }
 
+#wrap_write .wrap_btn .delete_box {
+	display: block;
+    margin: 0px auto 20px;
+    padding: 15px 0px;
+    border: 1px solid #ff4e45;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    color: #ff4e45;
+    cursor: pointer;
+}
 
 
 
@@ -946,13 +957,14 @@ input {
 
 
 #btn_update {
+	z-index: 999;
 	position: fixed;
-    right: 20px;
+    right: 40px;
     width: 100px;
-    height: 60px;
-    bottom: 20px;
-    background-color: #dc287c;
+    bottom: 40px;
+    background-color: #ff8983;
     border-radius: 40px;
+    filter: drop-shadow(0px 3px 4px rgba(140, 140, 140, 0.25));
 }
 
 #btn_update a {
@@ -964,7 +976,91 @@ input {
 #btn_update span {
 	color: #fff;
     font-size: 20px;
-    font-family: KakaoBold;
-    padding-top: 16px;
+    font-family: KakaoLight;
+    padding: 17px;
     display: block;
+}
+
+
+
+#wrap_footer {
+	position: relative;
+    z-index: 1;
+    height: 250px;
+    width: 100%;
+    border-top: 2px solid #302f30;
+    background-color: #302f30;
+}
+
+#wrap_footer .footer_box {
+	overflow: hidden;
+    position: relative;
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#wrap_footer .footer_box .link_home {
+	display:inline-block;
+    width: 140px;
+    height: 28px;
+    margin: 50px 0px;
+    font-size: 0;
+    line-height: 0;
+    background: url(//t1.kakaocdn.net/together_image/common/tit_footer_180629.png) no-repeat 0 0;
+    background-size: 140px 28px;
+    text-indent: -9999px;
+}
+
+#wrap_footer .footer_box .left {
+	width: 50%;
+	float: left;
+}
+
+#wrap_footer .footer_box .right {
+	width: 50%;
+	float: right;
+}
+
+
+#wrap_footer .footer_box .info_me {
+    width: 300px;
+}
+
+#wrap_footer .footer_box .info_me span {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 17px;
+    color: #989798;
+}
+
+#wrap_footer .footer_box .link_info {
+    display: inline-block;
+    padding: 50px 50px;
+    float: right;
+}
+
+#wrap_footer .footer_box .link_info span {
+	font-family: KakaoLight;
+	margin-bottom: 5px;
+	font-size: 17px;
+    color: #989798;
+    text-align: right;
+}
+
+#wrap_footer .footer_box .link_info .contact {
+	float: right;
+    display: block;
+    width: 160px;
+    height: 60px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid #989798;
+}
+
+#wrap_footer .footer_box .link_info .contact span {
+	display: inline-block;
+	padding-top: 19px;
+	font-size: 18px;
 }
