@@ -1,5 +1,7 @@
 # KakaoTogether
-Dynamic Web Programming으로 클론코딩한 카카오같이가치 페이지
+카카오같이가치 클론코딩 <br>
+1인 개발 : 김명지 (Kim Myoung Ji) <br>
+작업 기간 : 2022.02. ~
 <br><br>
 
 2022.02. 개발 진행 중 <br>
