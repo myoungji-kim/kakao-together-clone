@@ -20,7 +20,7 @@ public class LoginActionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userid = request.getParameter("userid");
 		String passwd = request.getParameter("passwd");
-		String next = "";
+		String next = request.getParameter("next");
 		
 		MemberService service = new MemberServiceImpl();
 		
@@ -35,7 +35,6 @@ public class LoginActionServlet extends HttpServlet {
 			} else {
 				HttpSession session = request.getSession();
 				session.setAttribute("login", dto);
-				next = "/main";
 			}
 			
 		} catch (Exception e) {

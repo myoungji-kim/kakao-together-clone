@@ -76,5 +76,33 @@ public class NowServiceImpl implements NowService {
 		}
 		return num;
 	}
+
+	@Override
+	public int updateNow(NowDTO dto) throws Exception {
+		int num = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			NowDAO dao = new NowDAO();
+			num = dao.updateNow(session, dto);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+
+	@Override
+	public int deleteNow(int idx) throws Exception {
+		int num = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			NowDAO dao = new NowDAO();
+			num = dao.deleteNow(session, idx);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
 	
 }

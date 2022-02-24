@@ -47,25 +47,47 @@ public class NowDTO {
 		this.subtopic = subtopic;
 	}
 	
-	// NowContent 1개용 생성자
-		public NowDTO(String topic, String title, String agency, int price, String image0, String head1,
-				String body1, String image1, String youtube1, String tag1, String tag2, String tag3, int writer,
-				String subtopic) {
-			this.topic = topic;
-			this.title = title;
-			this.agency = agency;
-			this.price = price;
-			this.image0 = image0;
-			this.head1 = head1;
-			this.body1 = body1;
-			this.image1 = image1;
-			this.youtube1 = youtube1;
-			this.tag1 = tag1;
-			this.tag2 = tag2;
-			this.tag3 = tag3;
-			this.writer = writer;
-			this.subtopic = subtopic;
-		}
+	// NowContent 1개용 생성자 + insert용
+	public NowDTO(String topic, String title, String agency, int price, String image0, String head1,
+			String body1, String image1, String youtube1, String tag1, String tag2, String tag3, int writer,
+			String subtopic) {
+		this.topic = topic;
+		this.title = title;
+		this.agency = agency;
+		this.price = price;
+		this.image0 = image0;
+		this.head1 = head1;
+		this.body1 = body1;
+		this.image1 = image1;
+		this.youtube1 = youtube1;
+		this.tag1 = tag1;
+		this.tag2 = tag2;
+		this.tag3 = tag3;
+		this.writer = writer;
+		this.subtopic = subtopic;
+	}
+	
+	
+	// update용
+	public NowDTO(int idx, String topic, String title, String agency, int price, String image0, String head1,
+			String body1, String image1, String youtube1, String tag1, String tag2, String tag3, int writer,
+			String subtopic) {
+		this.idx = idx;
+		this.topic = topic;
+		this.title = title;
+		this.agency = agency;
+		this.price = price;
+		this.image0 = image0;
+		this.head1 = head1;
+		this.body1 = body1;
+		this.image1 = image1;
+		this.youtube1 = youtube1;
+		this.tag1 = tag1;
+		this.tag2 = tag2;
+		this.tag3 = tag3;
+		this.writer = writer;
+		this.subtopic = subtopic;
+	}
 
 	// NowList 보기용 생성자
 	public NowDTO(String topic, String title, String agency, int price, String image0, String head1,

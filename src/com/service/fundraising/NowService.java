@@ -13,4 +13,6 @@ public interface NowService {
 	public NowDTO selectNowContent(String idx) throws Exception;
 	public String selectNowContentTag(String code) throws Exception;
 	public int insertNow(NowDTO dto) throws Exception;
+	public int updateNow(NowDTO dto) throws Exception;
+	public int deleteNow(int idx) throws Exception;
 }

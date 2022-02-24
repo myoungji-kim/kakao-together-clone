@@ -13,7 +13,7 @@ public class LogoutActionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String next = "";
 		HttpSession session = request.getSession();
-		if (session.getAttribute("member") == null) {
+		if (session.getAttribute("login") == null) {
 			next = "member/sessionInvalidate.jsp";
 		} else {
 			session.invalidate();

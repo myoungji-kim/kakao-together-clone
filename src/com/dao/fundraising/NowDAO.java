@@ -27,4 +27,12 @@ public class NowDAO {
 	public int insertNow(SqlSession session, NowDTO dto) throws Exception {
 		return session.insert("com.config.NowMapper.insertNow", dto);
 	}
+	
+	public int updateNow(SqlSession session, NowDTO dto) throws Exception {
+		return session.update("com.config.NowMapper.updateNow", dto);
+	}
+	
+	public int deleteNow(SqlSession session, int idx) throws Exception {
+		return session.delete("com.config.NowMapper.deleteNow", idx);
+	}
 }

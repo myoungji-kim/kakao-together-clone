@@ -16,11 +16,11 @@ import com.service.fundraising.NowServiceImpl;
 public class WriteActionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String next = "";
-		String mode = request.getParameter("mode"); // insert or update
-		String topic = "";
-		String cate = request.getParameter("cate"); // fund or prom
-		if (cate.equals("fund")) { topic = request.getParameter("topic"); }
 		String idx = request.getParameter("idx");
+		String mode = request.getParameter("mode"); // insert or update
+		String cate = request.getParameter("cate"); // fund or prom
+		String topic = "";
+		if (cate.equals("fund")) { topic = request.getParameter("topic"); }
 		String title = request.getParameter("title");
 		String agency = request.getParameter("agency");
 		String price = request.getParameter("price");
@@ -36,20 +36,37 @@ public class WriteActionServlet extends HttpServlet {
 		String writer = request.getParameter("writer");
 		String subtopic = "";
 		if (topic.equals("1")) { subtopic = request.getParameter("subtopic"); }
-		System.out.println("cate: "+cate);
-		
 		NowService service = new NowServiceImpl();
+		
+		
+		
+		
 		if (cate.equals("fund")) {
 			if (topic.equals("1")) { // now - 모금중
-//				System.out.println(topic+" "+title+" "+agency+" "+Integer.parseInt(price)+" "+
-//						image0+" "+head1+" "+body1+" "+image1+" "+youtube1+" "+tag1+" "+
-//						tag2+" "+tag3+" "+Integer.parseInt(writer)+" "+subtopic);
+				/*
+				 * System.out.println("::::"+topic+" "+title+" "+agency+" "+Integer.parseInt(
+				 * price)+" "+ image0+" "+head1+" "+body1+" "+image1+" "+youtube1+" "+tag1+" "+
+				 * tag2+" "+tag3+" "+Integer.parseInt(writer)+" "+subtopic);
+				 */
 				
-				NowDTO nowDTO = new NowDTO(topic, title, agency, Integer.parseInt(price),
-						image0, head1, body1, image1, youtube1, tag1,
-						tag2, tag3, Integer.parseInt(writer), subtopic);
+				
 				try {
-					int num = service.insertNow(nowDTO);
+					
+					int num = 0;
+					// insert
+					if (mode.equals("insert")) {
+						NowDTO nowDTO = new NowDTO(topic, title, agency, Integer.parseInt(price),
+								image0, head1, body1, image1, youtube1, tag1,
+								tag2, tag3, Integer.parseInt(writer), subtopic);
+						num = service.insertNow(nowDTO);
+					
+					// update
+					} else if (mode.equals("update")) {
+						NowDTO nowDTO = new NowDTO(Integer.parseInt(idx), topic, title, agency, Integer.parseInt(price),
+								image0, head1, body1, image1, youtube1, tag1,
+								tag2, tag3, Integer.parseInt(writer), subtopic);
+						num = service.updateNow(nowDTO);
+					}
 					next = "/fund/now?sort=1";
 				} catch (Exception e) {
 					next = "/Error500";
@@ -67,7 +84,7 @@ public class WriteActionServlet extends HttpServlet {
 			}
 			
 		} else if (cate.equals("prom")) {
-			next = "/promotion";
+			next = "/prom";
 		}
 		response.sendRedirect(next);
 	}
