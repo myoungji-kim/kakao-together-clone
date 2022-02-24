@@ -8,7 +8,7 @@
 	
 	<filter-mapping>
 		<filter-name>EncodingFilter</filter-name>
-		<url-pattern>/</url-pattern> <!-- 왜 깨지지 ..? -->
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
 	<!-- 로그인 세션 체크 Filter -->
@@ -19,7 +19,9 @@
 	
 	<filter-mapping>
 		<filter-name>LoginSessionFilter</filter-name>
-		<url-pattern>/mypage/*</url-pattern>
+		<url-pattern>/mypage</url-pattern>
+		<url-pattern>/mypage.action</url-pattern>
 		<url-pattern>/write</url-pattern>
+		<url-pattern>/write.action</url-pattern>
 	</filter-mapping>
 </web-app>

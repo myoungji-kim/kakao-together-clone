@@ -3,15 +3,21 @@
 <%@ include file="../include/header.jsp" %>
  
 <script type="text/javascript">
+	var ref = document.referrer;
 	function login_submit(){
 		if ($('[name=userid]').val()=="" || $('[name=passwd]').val()==""){
 			alert("아이디 및 비밀번호를 확인해주세요");
 		} else {
+			if (ref.indexOf("/member/sessionInvalidate.jsp") != -1){
+				$('[name=next]').val("/main");
+			} else {
+				$('[name=next]').val(ref);
+			}
 			$('[name=loginForm]').submit();
 		}
 	}
-</script>
 
+</script>
 
 <div id="top_wrap"><div id="wrap_logo">
 	<a class="mainLogo" href="/main"><img src="${imgSrc}/tit_blacklogo_190212.png"></a>
@@ -24,6 +30,7 @@
 			<span class="light">응원합니다 ♡</span>
 		</div>
 		<form action="/login.action" id="login_form" name="loginForm" method="post">
+			<input type="hidden" name="next">
 			<div class="item_box"> 
 				<div><input type="text" id="userid" name="userid" placeholder="아이디를 입력하세요" autocomplete="off"></div>
 			</div>

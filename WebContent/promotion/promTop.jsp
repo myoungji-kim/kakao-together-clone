@@ -7,13 +7,13 @@
 	<div id="wrap_tab">
 		<ul class="list_tab">
 			<li>
-				<a href="/promotion"><span <c:if test="${param.phase==null}"> class="on"</c:if>>전체</span></a>
+				<a href="/prom"><span <c:if test="${param.phase==null}"> class="on"</c:if>>전체</span></a>
 			</li>
 			<li>
-				<a href="/promotion?phase=2"><span <c:if test="${param.phase==2}"> class="on"</c:if>>진행중</span></a>
+				<a href="/prom?phase=2"><span <c:if test="${param.phase==2}"> class="on"</c:if>>진행중</span></a>
 			</li>
 			<li>
-				<a href="/promotion?phase=3"><span <c:if test="${param.phase==3}"> class="on"</c:if>>종료</span></a>
+				<a href="/prom?phase=3"><span <c:if test="${param.phase==3}"> class="on"</c:if>>종료</span></a>
 			</li>
 		</ul>
 	</div> <!-- end wrap_tab -->

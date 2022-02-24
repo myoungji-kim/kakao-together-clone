@@ -40,7 +40,6 @@
 	
 	<nav id="wrap_util">
 		<ul class="inner">
-		
 			<%
 				MemberDTO loginDTO = (MemberDTO) session.getAttribute("login");
 				if (loginDTO == null){
@@ -54,10 +53,14 @@
 			
 			<% } else { %>
 			<li>
-				<a class="link_util link_fund" href="/write" style="background-color:#dc287c; border-color:#dc287c;">등록하기</a>
+				<c:if test="${url ne '/write'}">
+				<a class="link_util link_fund" href="/write" 
+				 style="background-color:#dc287c; border-color:#dc287c;">등록하기</a>
+				</c:if>
 			</li>
 			<li>
-				<a class="link_util link_login" href="/mypage" style="background-color:#333; border-color:#333; color: #fff;">마이페이지</a>
+				<a class="link_util link_login" href="/mypage" 
+				 style="background-color:#333; border-color:#333; color: #fff;">마이페이지</a>
 			</li>
 			<li>
 				<a class="link_util link_login" href="/logout.action">로그아웃</a>

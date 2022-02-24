@@ -5,8 +5,21 @@
 
 
 <script type="text/javascript">
+	
+	// 글 삭제
+	function writeForm_delete(){
+		$('input[name=mode]').val("delete");
+		var cate = $('input[name=cate]').val();
+		var idx = $('input[name=idx]').val();
+		
+		location.href=`/del.action?cate=\${cate}&idx=\${idx}`;
+	}
+
 	// 유효성 검사
 	function writeForm_submit(){
+		// disabled 풀어주기
+		$('input[name=cate], #topic, #subtopic').attr("disabled", false);
+		
 		var mesg = "";
 		
 		// 태그
@@ -85,9 +98,7 @@
 		// cate가 fund일 때 라디오 체크 및 카테고리 보여주기
 		if ($('input[name=cCate]').val() == 'fund'){
 			$(':radio[id="fund"]').attr("checked", true);
-			$("select[name='topic']").each(function(i) {
-				this.value = $('input[name=tTopic]').val();
-			});
+			$("select[name='topic']").val($('input[name="tTopic"]').val());
 		}
 		
 		// cate가 prom일 때 라디오 
@@ -97,15 +108,14 @@
 		
 		// fund > topic이 1일 때 세부 주제 보여주기
 		if ($("select[name='topic']").val() == "1"){
-			$("select[name='subtopic']").each(function(i) {
-				this.value = $('input[name="sSubtopic"]').val();
-			});
+			$("select[name='subtopic']").val($('input[name="sSubtopic"]').val());
 		}
+		
 	})
 </script>
 
 
-<form action="/write.action" method="post" name="writeForm">
+<form action="/write.action" method="get" name="writeForm">
 <c:choose>
 	<c:when test="${not empty nowContent}">
 		<c:set var="mode" value="update"></c:set>
@@ -141,6 +151,7 @@
 	</c:when>
 </c:choose>
 <div id="wrap_write">
+
 	<input type="hidden" name="idx" value="${idx}">
 	<input type="hidden" name="mode" value="${mode}">
 	<input type="hidden" name="cCate" value="${cate}">
@@ -151,7 +162,7 @@
 		<tr>
 			<td colspan="3">
 				<div class="top_title">
-					<span class="light">  
+					<span class="light">
 						<c:if test="${mode =='insert'}">글 등록하기</c:if>
 						<c:if test="${mode =='update'}">글 수정하기</c:if>
 					</span>
@@ -166,6 +177,7 @@
 			<th><span>작성자</span></th>
 			<td colspan="2"><div class="bottom_line"><input readonly="readonly" id="agency" name="agency" value="${login.username}"></div></td>
 		</tr>
+	
 		<tr class="tr_oneLine">
 			<th>카테고리 분류</th>
 			<td style="width: 40%;">
@@ -173,12 +185,12 @@
 					<input type="radio" id="fund" name="cate" value="fund" onclick="showTopicSelect()">같이기부
 				</label>
 				<!-- 모음중/모음후기/나눔캠페인 관련 카테고리 -->
-				<select id="topic" name="topic" class="topic" onclick="showSubTopicSelect()">
+	 			<select id="topic" name="topic" class="topic" onclick="showSubTopicSelect()">
 					<option value="0">카테고리 선택</option>
 					<option value="1">모금중</option>
 					<option value="2">모금후기</option>
 					<option value="3">나눔캠페인</option>
-				</select>
+				</select> 
 				<!-- '모금중'일 경우 주제 선택 -->
 				<select id="subtopic" name="subtopic" class="subtopic">
 					<option value="0">주제 선택</option>
@@ -222,9 +234,18 @@
 				<div class="input_tag"><input type="text" name="tag3" value="${tag3}" placeholder="태그3 (선택)"></div>
 			</td>
 		</tr>
+	
 	</table>
+	
 	<div class="wrap_btn">
-		<a class="submit_box" onclick="writeForm_submit()"><span>글 올리기</span></a>
+		<a class="submit_box" onclick="writeForm_submit()">
+			<c:if test="${mode =='insert'}">등록하기</c:if>
+			<c:if test="${mode =='update'}">수정하기</c:if>
+		</a>
+		<c:if test="${mode =='update'}">
+			<a class="delete_box" onclick="writeForm_delete()"> 삭제하기 </a>
+		</c:if>
 	</div>
+	
 </div>
 </form>
