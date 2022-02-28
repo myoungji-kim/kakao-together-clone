@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'KakaoLight';
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/KakaoRegular.ttf') format('truetype');
+  src: url('../fonts/KakaoOTFRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'KakaoBold';
+  font-weight: 700;
+  font-style: bold;
+  src: url('../fonts/KakaoBold.ttf') format('truetype');
+  src: url('../fonts/KakaoOTFBold.otf') format('opentype');
+}
