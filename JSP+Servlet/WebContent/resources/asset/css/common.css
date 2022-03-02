@@ -185,6 +185,76 @@ input {
 
 
 
+.wrap_search {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap_search .searchForm {
+	position: relative;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.wrap_search .box_search {
+	position: relative;
+    height: 70px;
+    padding: 0 67px;
+    border-radius: 35px;
+    background-color: #f7f8f9;
+}
+
+.wrap_search .input_search {
+	width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    border: 0;
+    font-size: 24px;
+    line-height: 30px;
+    color: #444;
+    font-family: KakaoBold;
+    background-color: initial;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.wrap_search .btn_delete {
+    position: absolute;
+    right: 26px;
+    top: 20px;
+    width: 29px;
+    height: 29px;
+}
+
+.wrap_search .ico_delete {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    background-position: -532px -128px;
+}
+
+.wrap_search .btn_search {
+    position: absolute;
+    top: 19px;
+    left: 28px;
+    width: 30px;
+    height: 30px;
+}
+
+.wrap_search .ico_search {
+	display: block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+	background: url(//t1.kakaocdn.net/together_image/common/ico_together_201008.png) no-repeat 0 0;
+    width: 25px;
+    height: 25px;
+    background-position: -492px -512px;
+}
+
+
+
 
 .group_catelist {
     width: 1000px;
@@ -783,6 +853,27 @@ input {
     background-size: cover;
 }
 
+#wrap_content #body_cont .cont_box .video_wrap {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 50px auto;
+}
+
+#wrap_content #body_cont .video_wrap .video {
+    position: absolute;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+
+
+
 
 
 
@@ -901,6 +992,24 @@ input {
     margin: 30px auto;
 }
 
+
+#wrap_cnt_prom #body_cont .cont_box .video_wrap {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 50px auto;
+}
+
+#wrap_cnt_prom #body_cont .video_wrap .video {
+    position: absolute;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+}
 
 
 
@@ -1214,7 +1323,7 @@ input {
     margin: 50px 0px;
     font-size: 0;
     line-height: 0;
-    background: url(//t1.kakaocdn.net/together_image/common/tit_footer_180629.png) no-repeat 0 0;
+    background: url(../images/footer_logo.png) no-repeat 0 0;
     background-size: 140px 28px;
     text-indent: -9999px;
 }
@@ -1321,4 +1430,43 @@ input {
 .ui-datepicker-calendar tr td:nth-last-child(1) a {
 	color: #0d47a1 !important;
 }
+
+
+
+
+
+
+
+/* Paging */
+#wrap_paging {
+	text-align: center; 
+	margin: 60px auto 0px;
+}
+
+
+#wrap_paging .btn_prev span {
+	display: inline-block;
+    color: #444;
+    opacity: 0.7;
+    font-size: 18px;
+    margin: 0px 10px;
+    border-bottom: 1px solid #444;
+} 
+
+#wrap_paging .page_num span {
+	display: inline-block;
+ 	color: #222;
+ 	font-size: 20px;
+ 	margin: 0px 10px;
+	border-bottom: 1px solid black;
+}
+
+#wrap_paging .btn_next span {
+	display: inline-block;
+    color: #444;
+    opacity: 0.7;
+    font-size: 18px;
+    margin: 0px 10px;
+    border-bottom: 1px solid #444;
+} 
 
