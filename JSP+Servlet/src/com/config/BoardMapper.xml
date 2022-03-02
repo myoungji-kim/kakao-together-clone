@@ -5,13 +5,20 @@
 <mapper namespace="com.config.BoardMapper">
 
 	<!-- count Total -->
-	<select id="countTotalProm" resultType="int">
+	<select id="countTotalProm" parameterType="hashmap" resultType="int">
 		select count(*)
 		from kakao_board
 		where cate = 'prom'
 			<if test='phase == 2'> and enddate <![CDATA[ >= ]]> TO_CHAR(SYSDATE, 'YYYY.MM.DD') </if>
 		  	<if test='phase == 3'> and enddate <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'YYYY.MM.DD') </if>
 	</select>
+	
+	<select id="countTotalMywrite" parameterType="hashmap" resultType="int">
+		select count(*)
+		from kakao_board
+		where writer = #{writer}
+	</select>
+
 
 
 	<!-- Now 관련 -->
@@ -127,6 +134,21 @@
 	
 	
 	
+	
+	<!-- Mywrite 관련 -->
+	<select id="selectAllMywrite" parameterType="hashmap" resultType="BoardDTO">
+		SELECT * FROM (
+			    SELECT ROWNUM rn, b.*
+			        FROM ( select a.idx, a.topic, a.title, a.agency, a.price, a.pricestate, a.cheer,
+			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
+			        			  a.writer, a.subtopic, a.cate,
+			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 
+							      TO_CHAR(enddate, 'YYYY.MM.DD') as enddate 
+						from kakao_board a
+						where writer = #{writer} 
+						order by idx desc ) b
+		) WHERE rn between #{page.contentBegin} and #{page.contentEnd}
+	</select>
 	
 	
 	

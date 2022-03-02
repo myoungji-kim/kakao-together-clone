@@ -10,7 +10,7 @@ import com.dto.board.BoardDTO;
 
 public interface BoardService {
 	// Count
-	public int countTotalProm() throws Exception;
+	public int countTotalProm(HashMap<String, Object> map) throws Exception;
 	
 	// Now
 	public List<BoardDTO> selectAllNow(HashMap<String, Object> map) throws Exception;
@@ -29,5 +29,11 @@ public interface BoardService {
 	
 	// Delete
 	public int deleteOne(int idx) throws Exception;
+	
+	
+	// Mywrite
+	public int countTotalMywrite(HashMap<String, Object> map) throws Exception;
+	public List<BoardDTO> selectAllMywrite(HashMap<String, Object> map) throws Exception;
+	
 	
 }

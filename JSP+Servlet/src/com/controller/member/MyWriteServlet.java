@@ -1,7 +1,6 @@
-package com.controller.promotion;
+package com.controller.member;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,50 +10,52 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dto.board.BoardDTO;
 import com.dto.board.PageDTO;
+import com.dto.member.MemberDTO;
 import com.service.board.BoardService;
 import com.service.board.BoardServiceImpl;
+import com.service.member.MemberService;
+import com.service.member.MemberServiceImpl;
 
-@WebServlet("/prom")
-public class PromServlet extends HttpServlet {
-
+@WebServlet("/mypage/mywrite")
+public class MyWriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String next = "";
-		String phase = request.getParameter("phase"); // 진행중, 종료
 		String pageNum = request.getParameter("no"); // 페이지 번호
-		
-		// 게시글 가져올 기준들
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("phase", phase);
-		
 		BoardService service = new BoardServiceImpl();
 		
+		HttpSession session = request.getSession();
+		int writer = ((MemberDTO) session.getAttribute("login")).getIdx();
+		
 		try {
-			int total = service.countTotalProm(map);
+			map.put("writer", writer);
+			int total = service.countTotalMywrite(map);
+			
 			PageDTO paging = new PageDTO(total, pageNum);
 			map.put("page", paging);
 			
 			List<BoardDTO> list = null;
-			list = service.selectAllProm(map);
-			request.setAttribute("promList", list);
+			list = service.selectAllMywrite(map);
+			request.setAttribute("mywriteList", list);
 			
 			Map<String, Object> page = paging.getPageInfo();
 			request.setAttribute("page", page);
 			
-			next = "/promotion.jsp";
+			next = "/mywrite.jsp";
 		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("errorMessage", "Now 페이지 요청시 예외 발생");
 			next = "/Error500";
+			e.printStackTrace();
 		}
 		
-		
-		request.getRequestDispatcher("/promotion.jsp").forward(request, response);
+		request.getRequestDispatcher(next).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 

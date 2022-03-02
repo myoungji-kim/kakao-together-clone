@@ -50,7 +50,7 @@ public class PageDTO {
 
 	// 페이지 관련
 	public int getContentBegin(int pageNow, int contentNum) { 
-		int contentBegin = ((pageNow-1)*contentNum);
+		int contentBegin = ((pageNow-1)*contentNum) + 1;
 		return contentBegin;
 	}
 

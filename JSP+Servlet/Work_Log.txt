@@ -1,0 +1,103 @@
+	
+	[To Do]
+	
+	- 검색 페이지 html 만들기
+	- 검색 기능 추가하기
+	- 모금후기 게시판 html
+	- 모금후기 페이징  
+	- sysout 대신 logger 사용하기
+	- 기부하기 기능 추가
+	- 모금중 무한 스크롤 기능 추가
+	- fileUpload 적용하기 (이미지 업로드)
+		=> lib에 jar 추가
+			: fileupload (commons-fileupload-1.4.jar)
+			: io (commons-io-2.11.0.jar)
+	
+	
+	
+	[Success]
+	(02/28)
+	- mail api 적용해서 문의하기 구현
+		=> Gmail API
+		=> https://shxrecord.tistory.com/118
+		=> activation-1.1.jar , javax.mail-1.6.1.jar
+		=> method를 post로 하니까 에러남, 무조건 get으로 할 것
+	- 마이페이지 '나의 글'에서 본인이 작성한 글 목록 확인 (게시판 페이징)
+	- 프로모션 페이징 구현
+	- 글 자세히보기에 youtube iframe 추가하기
+	
+	(02/27)
+	- 프로모션 날짜별로 진행중, 종료 data 가져오기 (if문 추가)
+	- 프로모션 자세히보기 html, servlet 구현
+	- 프로모션 > 종료일 선택 > datepicker 추가하기
+	- 프로모션 게시판 html
+	- 프로모션 Delete 구현
+	
+	(02/26)
+	- 프로모션 insert
+	- selectAllNow와 selectTopicNow 하나의 쿼리로 합치기
+	
+	(02/25)
+	- 코드 전체적으로 갈아엎을 계획 정리
+	    => 평화롭게 프로모션 CRUD를 시작하려고 했으나..?
+		=> 글 작성 페이지에서 카테고리 하나(fund/prom)를 고려하지 않고
+		   같은 서블릿과 jsp에서 작업을 진행하려고 했는데 파라미터 값들이 다 꼬이고
+		   값을 받아오지 못하는 상황이 벌어지면서 총체적 난국이 됨
+		=> 결국 fund와 prom으로 나눴던 테이블과 서비스, dao를 
+		   board 하나로 합치고 컨트롤러부터 매퍼까지 싹다 수정함 ..
+		=> 기획과 ERD의 중요성 ..... 휴 몇번째 갈아엎는거니? 정신차려!!!!
+		    
+	
+	(02/23)
+	- Footer html 제작하기
+	
+	- 게시글(fund) delete servlet 구현
+		=> 하나의 write.action에서 처리하고 싶었는데, 
+		   가져올 파라미터 개수도 다르고 조건문을 주기에는 코드가 너무 더러워져서 delete용 서블릿 하나 더 만듦
+	
+	- 게시글(fund) update servlet 구현
+		=> disabled 속성 주면 form 값으로 안 넘어간다.... ㅠㅠ 
+		=> 유효성 체크할 때 전체적으로 disabled false 줄 것!
+	
+	- Encoding Filter 돌렸을 때 css 깨지는 문제 해결
+		=> response.setContentType("text/html; charset=utf-8"); 
+		   이걸 doFilter에 추가하면 css가 제대로 인식 안 됨
+		   jsp가 include할 때 요청이 되는데, 이때 필터가 실행되면서 응답할 때 css가 아니라 text/html 타입으로 처리하기 때문
+		   
+	- 로그인했을 때 원래 보고 있던 화면으로 보내기
+		=> var ref = document.referrer;
+		=> if (ref.indexOf("/member/sessionInvalidate.jsp") != -1)
+	
+	
+	
+	(02/22 => 새벽 5시에 잤따 ...)
+	- 기부금에 따라 div 바 길이 설정
+		=> price, pricestate를 활용해 진행된 %만큼 width 값을 지정
+	- 글 등록하기
+		=> 카테고리 선택 js 메서드 생성
+		=> 하나의 등록하기 페이지에서 모든 카테고리를 설정할 수 있음
+	- 글 수정하기
+		=> 거의 2시간 동안 프로젝트 구조 대공사 .. 
+		   처음에 ERD나 DTO 구조 잘 기획하자 ㅠㅠㅠ
+		   cate, topic, subtopic 네이밍이나 필요한 추가 파라미터 넣으면서 난리남..
+		=> 수정하기 들어갈 때 cate와 글 idx를 파라미터로 넘기면서 mode가 update로 되고,
+		   해당하는 값들 다 set함
+		=> 카테고리는 변경 불가능하게 함
+	- 멤버별 글 수정모드 on/off
+		=> 로그인 세션 정보 중 멤버 idx 받아와서 게시글의 writer의 idx와 일치할 경우 수정 버튼 visible
+	- Fundraising Now 글 자세히 보기
+		=> html, css 구현 완료
+	- 파일 네이밍 전면 수정
+		=> 짧고 간결하게, 이해하기 쉽게 네이밍하자!!
+	- 마이페이지 카테고리 나누기 
+		=> 내 정보, 나의 글, 내 기부
+	
+	
+	
+	(02/21)
+	- 로그인 세션 오류 해결 
+		=> <%page session="False"%> 막 넣지 않기
+	- 마이페이지 완성
+		=> 정보 수정 완성
+	- 글 자세히 보기 jsp 생성 
+		=> 파라미터 값 받아오는 것만 구현

@@ -59,7 +59,20 @@ public class BoardDAO {
 		return session.delete("com.config.BoardMapper.deleteOne", idx);
 	}
 
-	public int countTotalProm(SqlSession session) {
-		return session.selectOne("com.config.BoardMapper.countTotalProm");
+	public int countTotalProm(SqlSession session, HashMap<String, Object> map) throws Exception {
+		return session.selectOne("com.config.BoardMapper.countTotalProm", map);
 	}
+	
+	
+	
+	
+	
+	public int countTotalMywrite(SqlSession session, HashMap<String, Object> map) throws Exception {
+		return session.selectOne("com.config.BoardMapper.countTotalMywrite", map);
+	}
+	
+	public List<BoardDTO> selectAllMywrite(SqlSession session, HashMap<String, Object> map) throws Exception {
+		return session.selectList("com.config.BoardMapper.selectAllMywrite", map);
+	}
+	
 }

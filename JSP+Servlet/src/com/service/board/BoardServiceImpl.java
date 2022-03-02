@@ -13,17 +13,31 @@ public class BoardServiceImpl implements BoardService {
 
 	// Count
 	@Override
-	public int countTotalProm() throws Exception {
+	public int countTotalProm(HashMap<String, Object> map) throws Exception {
 		int num = 0;
 		SqlSession session = MySqlSessionFactory.getSession();
 		try {
 			BoardDAO dao = new BoardDAO();
-			num = dao.countTotalProm(session);
+			num = dao.countTotalProm(session, map);
 		} finally {
 			session.close();
 		}
 		return num;
 	}
+	
+	@Override
+	public int countTotalMywrite(HashMap<String, Object> map) throws Exception {
+		int num = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			num = dao.countTotalMywrite(session, map);
+		} finally {
+			session.close();
+		}
+		return num;
+	}
+	
 	
 	
 	// Fundraising
@@ -176,6 +190,23 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 		return num;
+	}
+
+
+	
+
+	// Mywrite
+	@Override
+	public List<BoardDTO> selectAllMywrite(HashMap<String, Object> map) throws Exception {
+		List<BoardDTO> list = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			list = dao.selectAllMywrite(session, map);
+		} finally {
+			session.close();
+		}
+		return list;
 	}
 
 
