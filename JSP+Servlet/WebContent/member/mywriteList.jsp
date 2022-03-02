@@ -4,18 +4,26 @@
 
 <div id="prom_wrap">
 	<ul>
-		<c:forEach var="prom" items="${promList}" varStatus="status">
-		<li>
-			<a href="prom/content?idx=${prom.idx}" class="link_card">
+		<c:forEach var="mywrite" items="${mywriteList}" varStatus="status">
+		<li>	
+			<c:if test="${mywrite.cate == 'fund'}">
+			<a href="/fund/now/content?idx=${mywrite.idx}&subtopic=${mywrite.subtopic}" class="link_card">
+			</c:if>
+			<c:if test="${mywrite.cate == 'prom'}">
+			<a href="/prom/content?idx=${mywrite.idx}" class="link_card">
+			</c:if>
 				<span class="thumb_img">
-					<img src="${imgSrc}/for-test/${prom.image0}">
+					<img src="${imgSrc}/for-test/${mywrite.image0}">
 				</span>
 				<div class="text_box">
 					<span class="title">
-						${prom.title}
+						${mywrite.title}
 					</span>
-					<span class="cate">프로모션</span>
-					<span class="date">${prom.writeday}~${prom.enddate}</span>
+					<span class="cate">
+						<c:if test="${mywrite.cate == 'fund'}">같이기부</c:if>
+						<c:if test="${mywrite.cate == 'prom'}">프로모션</c:if>
+					</span>
+					<span class="date">작성일 : ${mywrite.writeday}</span>
 				</div>
 			</a>
 		</li>

@@ -14,7 +14,7 @@
 		
 		<div class="right">
 			<div class="link_info">
-				<a href="/contact" class="contact"><span>Contact Me</span></a>
+				<a href="/sendmail" class="contact"><span>Contact Me</span></a>
 			</div>
 		</div>
 	</div>

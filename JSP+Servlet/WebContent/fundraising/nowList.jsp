@@ -32,11 +32,11 @@
 <div class="group_fundlist">
 	<div class="sort_cate">
 		<span class="inner_sort_cate">
-			<a href="/fund/now?subtopic=${param.subtopic }&sort=1">
+			<a href="/fund/now?subtopic=${param.subtopic}&sort=1">
 				<c:if test="${param.sort == 1 or param.sort == null}"><span class="box_sorting on">최신순</span></c:if>
 				<c:if test="${param.sort != 1 and param.sort != null}"><span class="box_sorting">최신순</span></c:if>
 			</a>
-			<a href="/fund/now?subtopic=${param.subtopic }&sort=2">
+			<a href="/fund/now?subtopic=${param.subtopic}&sort=2">
 				<c:if test="${param.sort == 2}"><span class="box_sorting on">오래된순</span></c:if>
 				<c:if test="${param.sort != 2}"><span class="box_sorting">오래된순</span></c:if>
 			</a>

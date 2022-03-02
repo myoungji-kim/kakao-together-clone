@@ -6,9 +6,8 @@
 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}" />
 <div id="top_wrap">
 	<div id="wrap_logo">
-		<a class="mainLogo" href="/main"><img src="${imgSrc}/tit_blacklogo_190212.png"></a>
+		<a class="mainLogo" href="/main"><img src="${imgSrc}/main_logo.png"></a>
 	</div>
-	<c:if test="${not fn:contains(url, '/mypage')}">
 	<nav id="wrap_topCate" class="" style="position: static; top: initial;">
 		<ul class="inner">
 			<li>
@@ -69,9 +68,8 @@
 			</li>
 			<% } %>
 			<li>
-				<a class="btn_search" href="/Error404"><span class="ico_search"><img src="${imgSrc}/ico_search_01.svg"></span></a>
+				<a class="btn_search" href="/search"><span class="ico_search"><img src="${imgSrc}/ico_search_01.svg"></span></a>
 			</li>
 		</ul>
 	</nav>
-	</c:if>
 </div>

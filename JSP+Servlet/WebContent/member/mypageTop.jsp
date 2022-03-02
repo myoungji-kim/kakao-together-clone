@@ -10,7 +10,7 @@
 				<a href="/mypage"><span <c:if test="${url eq '/mypage'}"> class="on"</c:if>>내 정보</span></a>
 			</li>
 			<li>
-				<a href="/Error404"><span <c:if test="${fn:contains(url, '/mypage/mywrite')}"> class="on"</c:if>>나의 글</span></a>
+				<a href="/mypage/mywrite"><span <c:if test="${fn:contains(url, '/mypage/mywrite')}"> class="on"</c:if>>나의 글</span></a>
 			</li>
 			<li>
 				<a href="/Error404"><span <c:if test="${fn:contains(url, '/mypage/mydonation')}"> class="on"</c:if>>내 기부</span></a>

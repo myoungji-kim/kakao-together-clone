@@ -149,7 +149,7 @@
 </script>
 
 
-<form action="/write.action" method="get" name="writeForm" enctype="multipart/form-data">
+<form action="/write.action" method="post" name="writeForm" enctype="multipart/form-data">
 <c:choose>
 	<c:when test="${not empty content}">
 		<c:set var="mode" value="update"/>

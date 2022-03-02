@@ -31,7 +31,13 @@
 		<div class="cont_box">
 			<span class="tit_head">${content.head1}</span>
 			<span class="txt_body">${content.body1}</span>
+			<c:if test="${content.image1 ne null}">
 			<span class="img_body" style="background-image: url('${imgSrc}/for-test/${content.image1 }');"></span>
+			</c:if>
+			<div class="video_wrap">
+				<iframe class="video" src="${content.youtube1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""> 
+				</iframe>
+			</div>		
 		</div>
 	</div>
 	<!-- 수정하기 btn -->

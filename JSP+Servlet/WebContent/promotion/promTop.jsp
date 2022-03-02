@@ -7,7 +7,7 @@
 	<div id="wrap_tab">
 		<ul class="list_tab">
 			<li>
-				<a href="/prom"><span <c:if test="${param.phase==null}"> class="on"</c:if>>전체</span></a>
+				<a href="/prom"><span <c:if test="${param.phase==null || param.phase == ''}"> class="on"</c:if>>전체</span></a>
 			</li>
 			<li>
 				<a href="/prom?phase=2"><span <c:if test="${param.phase==2}"> class="on"</c:if>>진행중</span></a>
