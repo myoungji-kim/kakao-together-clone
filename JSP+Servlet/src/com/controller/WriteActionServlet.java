@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.board.BoardDTO;
 import com.service.board.BoardService;
 import com.service.board.BoardServiceImpl;
+
+
 
 @WebServlet("/write.action")
 public class WriteActionServlet extends HttpServlet {
@@ -39,7 +42,7 @@ public class WriteActionServlet extends HttpServlet {
 		String enddate = request.getParameter("enddate");
 		if (topic.equals("1")) subtopic = request.getParameter("subtopic");
 		BoardService service = new BoardServiceImpl();
-
+		
 		if (cate.equals("fund")) {
 			if (topic.equals("1")) { // now - 모금중
 				try {
@@ -103,7 +106,6 @@ public class WriteActionServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}

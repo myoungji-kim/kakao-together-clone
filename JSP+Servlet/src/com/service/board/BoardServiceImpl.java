@@ -209,6 +209,19 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+	@Override
+	public List<BoardDTO> searchOne(HashMap<String, Object> map) throws Exception {
+		List<BoardDTO> list = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			list = dao.searchOne(session, map);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
 
 	
 	

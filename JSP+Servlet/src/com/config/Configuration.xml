@@ -30,5 +30,6 @@
   	<mapper resource="com/config/EpilMapper.xml"/> -->
     <mapper resource="com/config/BoardMapper.xml"/>
     <mapper resource="com/config/MemberMapper.xml"/>
+    <mapper resource="com/config/CheerMapper.xml"/>
   </mappers>
 </configuration>

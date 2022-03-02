@@ -159,6 +159,22 @@
 		where idx=#{idx}
 	</delete>
 	
+	
+	
+	<!-- Search -->
+	<select id="searchOne" parameterType="hashmap" resultType="BoardDTO">
+		select a.idx, a.topic, a.title, a.agency, a.price, a.pricestate, a.cheer,
+			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
+			        			  a.writer, a.subtopic, a.cate,
+			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 
+							      TO_CHAR(enddate, 'YYYY.MM.DD') as enddate
+		from kakao_board a
+		where title LIKE '%${key}%'
+		order by idx desc
+	</select>
+	
+	
+	
 </mapper>
 
 

@@ -30,10 +30,9 @@ public class BoardDAO {
 	}
 	
 	
+	
+	
 
-	
-	
-	
 	
 	
 	
@@ -73,6 +72,12 @@ public class BoardDAO {
 	
 	public List<BoardDTO> selectAllMywrite(SqlSession session, HashMap<String, Object> map) throws Exception {
 		return session.selectList("com.config.BoardMapper.selectAllMywrite", map);
+	}
+	
+	
+	// Search
+	public List<BoardDTO> searchOne(SqlSession session, HashMap<String, Object> map) throws Exception {
+		return session.selectList("com.config.BoardMapper.searchOne", map);
 	}
 	
 }

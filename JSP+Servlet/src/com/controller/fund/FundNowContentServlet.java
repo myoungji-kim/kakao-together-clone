@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.board.BoardDTO;
 import com.service.board.BoardService;
 import com.service.board.BoardServiceImpl;
+import com.service.cheer.CheerService;
+import com.service.cheer.CheerServiceImpl;
 
 
 @WebServlet("/fund/now/content")
@@ -27,12 +29,18 @@ public class FundNowContentServlet extends HttpServlet {
 		map.put("cate", "fund");
 		
 		BoardService service = new BoardServiceImpl();
+		CheerService cService = new CheerServiceImpl();
 		
 		try {
 			BoardDTO dto = service.selectNowContent(map);
 			String subtopic = service.selectNowContentTag(dto.getSubtopic()); // 주제 가져오기 (ex. 어린이, 여성, ..)
+			
 			request.setAttribute("content", dto);
 			request.setAttribute("subtopic", subtopic);
+			
+			int cheer = cService.selectCheer(Integer.parseInt(idx));
+			request.setAttribute("cheer", cheer);
+			
 			next = "/fundraising/nowContent.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -21,7 +21,26 @@ import com.service.board.BoardServiceImpl;
 public class SearchServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String next = "/search.jsp";
+		String next = "";
+		String key = request.getParameter("q");
+		
+		if (key != null) {
+			BoardService service = new BoardServiceImpl();
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("key", key);
+			List<BoardDTO> searchList;
+			try {
+				searchList = service.searchOne(map);
+				request.setAttribute("searchList", searchList);
+				next = "/search.jsp";
+			} catch (Exception e) {
+				next = "/Error500";
+				e.printStackTrace();
+			}
+		} else {
+			next = "/search.jsp";
+		}
+		
 		request.getRequestDispatcher(next).forward(request, response);
 	}
 

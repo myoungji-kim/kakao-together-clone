@@ -1,21 +1,34 @@
 	
 	[To Do]
 	
-	- 검색 페이지 html 만들기
-	- 검색 기능 추가하기
+	- fileUpload 적용하기 (이미지 업로드)
+		=> lib에 jar 추가
+			: fileupload (commons-fileupload-1.4.jar, commons-fileupload-1.2.2.jar)
+			: io (commons-io-2.11.0.jar, org.apache.commons.io-2.0.1.jar)
+		=> 계속 import 오류난다. jdk11과 버전이 맞지 않는 듯 싶은데... 바꿔도 오류가 똑같다 ㅠ
+		=> Spring Maven에서 추가해보자!
 	- 모금후기 게시판 html
 	- 모금후기 페이징  
 	- sysout 대신 logger 사용하기
 	- 기부하기 기능 추가
 	- 모금중 무한 스크롤 기능 추가
-	- fileUpload 적용하기 (이미지 업로드)
-		=> lib에 jar 추가
-			: fileupload (commons-fileupload-1.4.jar)
-			: io (commons-io-2.11.0.jar)
-	
+
 	
 	
 	[Success]
+	
+	(03/02)
+	- Fundraising 게시글에서 scroll 위치에 따라 하단바 불투명도 조절
+		=> scrollBottom
+	- 응원하기 기능 추가 
+		=> kakao_cheer 테이블 추가
+	- 글 삭제했을 때 cheer 테이블에서도 해당 게시글 응원 기록 삭제
+	- 검색 기능 추가하기 
+	- 글 작성 유효성 검사 보완 (int check, 세부 주제 등..)
+	
+	(03/01)
+	- 검색 페이지 html 만들기
+	
 	(02/28)
 	- mail api 적용해서 문의하기 구현
 		=> Gmail API
@@ -47,7 +60,6 @@
 		   board 하나로 합치고 컨트롤러부터 매퍼까지 싹다 수정함 ..
 		=> 기획과 ERD의 중요성 ..... 휴 몇번째 갈아엎는거니? 정신차려!!!!
 		    
-	
 	(02/23)
 	- Footer html 제작하기
 	
@@ -67,8 +79,6 @@
 	- 로그인했을 때 원래 보고 있던 화면으로 보내기
 		=> var ref = document.referrer;
 		=> if (ref.indexOf("/member/sessionInvalidate.jsp") != -1)
-	
-	
 	
 	(02/22 => 새벽 5시에 잤따 ...)
 	- 기부금에 따라 div 바 길이 설정
@@ -91,8 +101,6 @@
 		=> 짧고 간결하게, 이해하기 쉽게 네이밍하자!!
 	- 마이페이지 카테고리 나누기 
 		=> 내 정보, 나의 글, 내 기부
-	
-	
 	
 	(02/21)
 	- 로그인 세션 오류 해결 

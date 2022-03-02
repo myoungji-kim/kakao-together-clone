@@ -36,4 +36,6 @@ public interface BoardService {
 	public List<BoardDTO> selectAllMywrite(HashMap<String, Object> map) throws Exception;
 	
 	
+	// Search
+	public List<BoardDTO> searchOne(HashMap<String, Object> map) throws Exception;
 }
