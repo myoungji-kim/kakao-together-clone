@@ -2,37 +2,54 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script type="text/javascript">
+	function fSearch(f){
+		f.method = "get";
+		f.submit();
+	}
+</script>
+
+
 <div id="contents">
 <!-- 검색창 -->
 <div class="wrap_search">
-	<form class="searchForm" method="get">
+	<form name="searchForm" class="searchForm" method="get">
 		<div class="box_search">
-			<input placeholder="검색어를 입력하세요" name="search" class="input_search">
+			<input placeholder="검색어를 입력하세요" name="q" value="${param.q}" class="input_search">
 		</div>
-		<button type="button" class="btn_delete">
-			<span class="ico_delete">삭제</span>
-		</button>
-		<button type="submit" class="btn_search">
-			<span class="ico_search">검색</span>
-		</button>
+		<a class="btn_delete" onclick="search_delete()">
+			<span class="ico_delete">
+				<img src="${imgSrc}/ico_delete_01.svg">
+			</span>
+		</a>
+		<a class="btn_search" onclick="fSearch(searchForm)">
+			<span class="ico_search">
+				<img src="${imgSrc}/ico_search_01.svg">
+			</span>
+		</a>
 	</form>
 </div>
 
 <!-- 게시글 모음 -->
 <div class="group_fundlist">
 	<ul class="list_fund">
-		<c:forEach var="now" items="${nowList}" varStatus="status">
+		<c:if test="${searchList == null}">아직 아무것도 검색하지 않았어요!</c:if>
+		<c:forEach var="search" items="${searchList}" varStatus="status">
 		<li class="listcard">
-			<a href="/fund/now/content?idx=${now.idx}" class="link_content">
-				<span class="img_box"><img src="${imgSrc}/for-test/${now.image0}"></span>
+			<c:if test="${search.cate == 'fund'}">
+			<a href="/fund/now/content?idx=${search.idx}&subtopic=${search.subtopic}" class="link_content">
+			</c:if>
+			<c:if test="${search.cate == 'prom'}">
+			<a href="/prom/content?idx=${search.idx}" class="link_content">
+			</c:if>
+				<span class="img_box"><img src="${imgSrc}/for-test/${search.image0}"></span>
 				<span class="text_box">
-					<span class="title"> ${now.title} </span>
-					<span class="agency"> ${now.agency} </span>
-					<span class="state">
-						<span class="state_bar"></span>
-						<span class="state_ing" style="width: ${now.pricestate/now.price*100}px;"></span>
+					<span class="title"> ${search.title} </span>
+					<span class="search_agency"> ${search.agency} </span>
+					<span class="search_cate">
+						<c:if test="${search.cate == 'fund'}">같이기부</c:if>
+						<c:if test="${search.cate == 'prom'}">프로모션</c:if>
 					</span>
-					<span class="price_goal"> ${now.priceChar}원 </span>
 				</span>
 			</a>
 		</li>

@@ -20,7 +20,7 @@
 </script>
 
 <div id="top_wrap"><div id="wrap_logo">
-	<a class="mainLogo" href="/main"><img src="${imgSrc}/tit_blacklogo_190212.png"></a>
+	<a class="mainLogo" href="/main"><img src="${imgSrc}/main_logo.svg"></a>
 </div></div>
 
 <div id="page_login">

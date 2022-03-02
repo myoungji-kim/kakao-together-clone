@@ -18,12 +18,12 @@
 	function writeForm_submit(){
 		var mesg = "";
 		// 종료일
-		if ($('[name=enddate]').val()=="" && $('input[name=cCate]').val() == 'prom') {
+		if ($('[name=enddate]').val()=="" && $('input:radio[name=cate]:checked').val() == 'prom') {
 			mesg = "종료일, "+mesg;
 		}
 		
 		// 태그
-		if ($('[name=tag1]').val()=="" && $('input[name=cCate]').val() == 'fund') {
+		if ($('[name=tag1]').val()=="" && $('input:radio[name=cate]:checked').val() == 'fund') {
 			mesg = "태그1, "+mesg;
 		}
 		
@@ -38,20 +38,23 @@
 		}
 		
 		// 썸네일
-		/* if ($('[name=image0]').val()=="") {
-			mesg = "메인 이미지, "+mesg;
-		} */
+		if ($('[name=image0]').val()=="") {
+			mesg = "썸네일, "+mesg;
+		}
 		
 		// 목표 금액
-		if ($('[name=price]').val()=="" && $('input[name=cCate]').val() == 'fund'){
+		if ($('[name=price]').val()=="" && $('input:radio[name=cate]:checked').val() == 'fund'){
 			mesg = "목표 금액, "+mesg;
+		} else if (!$.isNumeric($('[name=price]').val()) && $('[name=price]').val()!=""){
+			mesg = "목표 금액(숫자만 가능), "+mesg;
 		}
 		
 		// 카테고리
 		if ($('input:radio[name=cate]').is(':checked')){
-			// 세부 카테고리
-			if ($('input:radio[name=cate]:checked').val() == "fund"
-					&& $('select[name=topic]').val()=="0") mesg = "세부 카테고리, "+mesg;	
+			if ($('input:radio[name=cate]:checked').val() == "fund") {
+				if ($('select[name=topic]').val()=="0") mesg = "세부 카테고리, "+mesg;	
+				else if ($('select[name=topic]').val()=="1" && $('select[name=subtopic]').val()=="0") mesg = "세부 주제, "+mesg;
+			}
 		} else {
 			mesg = "카테고리, "+mesg;
 		}
@@ -59,7 +62,10 @@
 		// 제목
 		if ($('[name=title]').val()=="") {
 			mesg = "제목, "+mesg;
+		} else if ($('[name=title]').val().length > 35){
+			mesg = "제목(35자 이내), "+mesg;
 		}
+		console.log("제목길이 : "+$('[name=title]').val().length);
 		
 		// Submit
 		if (mesg == "") {
@@ -82,6 +88,7 @@
 			$('#tag_wrap').css("display", "");
 		} else {
 			$('#topic').css("visibility", "hidden");
+			$('#subtopic').css("visibility", "hidden");
 			$('#price').css("display", "none");
 			$('#enddate_wrap').css("display", "");
 			$('#tag_wrap').css("display", "none");
@@ -149,7 +156,7 @@
 </script>
 
 
-<form action="/write.action" method="post" name="writeForm" enctype="multipart/form-data">
+<form action="/write.action" method="post" name="writeForm">
 <c:choose>
 	<c:when test="${not empty content}">
 		<c:set var="mode" value="update"/>
@@ -189,9 +196,9 @@
 	</c:when>
 </c:choose>
 <div id="wrap_write">
-	<input type="text" name="idx" value="${idx}">
+	<input type="hidden" name="idx" value="${idx}">
 	<input type="hidden" name="mode" value="${mode}">
-	<input type="text" name="cCate" value="${cate}">
+	<input type="hidden" name="cCate" value="${cate}">
 	<input type="hidden" name="writer" value="${writer}"> 
 	<input type="hidden" name="tTopic" value="${topic}">
 	<input type="hidden" name="sSubtopic" value="${subtopic}">

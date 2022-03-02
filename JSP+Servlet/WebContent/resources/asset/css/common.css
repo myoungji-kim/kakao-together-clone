@@ -59,7 +59,7 @@ input {
     width: 412px;
     height: 46px;
     margin: 0 auto;
-    padding: 20px 0 0;
+    padding: 24px 0 0;
 }
 
 #wrap_topCate .inner {}
@@ -186,7 +186,7 @@ input {
 
 
 .wrap_search {
-    margin: 0;
+    margin: 15px 0px;
     padding: 0;
 }
 
@@ -208,7 +208,6 @@ input {
 	width: 100%;
     height: 30px;
     margin-top: 20px;
-    border: 0;
     font-size: 24px;
     line-height: 30px;
     color: #444;
@@ -230,29 +229,33 @@ input {
     width: 24px;
     height: 24px;
     margin: 0 auto;
-    background-position: -532px -128px;
+    cursor: pointer;
+}
+
+.wrap_search .ico_delete img {
+	width: 100%;
 }
 
 .wrap_search .btn_search {
     position: absolute;
-    top: 19px;
+    top: 22px;
     left: 28px;
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 .wrap_search .ico_search {
 	display: block;
     overflow: hidden;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -9999px;
-	background: url(//t1.kakaocdn.net/together_image/common/ico_together_201008.png) no-repeat 0 0;
     width: 25px;
     height: 25px;
-    background-position: -492px -512px;
 }
 
+.wrap_search .ico_search img {
+	width: 100%;
+	height: 100%;	
+}
 
 
 
@@ -440,6 +443,30 @@ input {
     line-height: 18px;
 }
 
+.group_fundlist .text_box .search_agency {
+	display: inline-block;
+    overflow: hidden;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #999;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+	
+}
+
+.group_fundlist .text_box .search_cate {
+	display: inline-block;
+    font-size: 15px;
+    float: right;
+    color: #444;
+    font-family: KakaoBold;
+    text-align: right;
+    overflow: hidden;
+    margin: 7px 0 0 2px;
+    padding: 0 7px 0 4px;
+    line-height: 18px;	
+}
 
 
 
@@ -1198,10 +1225,10 @@ input {
 	position: fixed;
     right: 40px;
     width: 100px;
-    bottom: 40px;
-    background-color: #ff8983;
-    border-radius: 40px;
-    filter: drop-shadow(0px 3px 4px rgba(140, 140, 140, 0.25));
+    bottom: 10px;
+    background-color: #434343;
+    border-radius: 7px;
+    filter: drop-shadow(0px 2px 2px rgba(140, 140, 140, 0.25));
 }
 
 #btn_update a {
@@ -1323,7 +1350,7 @@ input {
     margin: 50px 0px;
     font-size: 0;
     line-height: 0;
-    background: url(../images/footer_logo.png) no-repeat 0 0;
+    background: url(../images/footer_logo.svg) no-repeat 0 0;
     background-size: 140px 28px;
     text-indent: -9999px;
 }
@@ -1470,3 +1497,123 @@ input {
     border-bottom: 1px solid #444;
 } 
 
+
+
+
+.fund_float {
+	z-index: 100;
+	position: fixed;
+	display: block;
+    left: 50%;
+    bottom: 10px;
+    width: 700px;
+    height: 60px;
+    margin-left: -350px;
+    background: none;
+}
+
+.fund_float .btn_c {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 25%;
+    height: 60px;
+    line-height: 60px;
+    background: #434343;
+    border-radius: 7px 0 0 7px;
+    cursor: pointer;
+}
+
+.fund_float .btn_c .ico_cheer {
+	display: inline-block;
+    width: 22px;
+    height: 20px;
+    margin: 7px 4px 0 38px;
+    float: left;
+}
+
+.fund_float .btn_c .ico_cheer img {
+	width: 100%;
+}
+
+.fund_float .btn_c .txt_cheer {
+    display: inline-block;
+    margin-left: 7px;
+    font-size: 20px;
+    color: #fff;
+    vertical-align: top;
+    float: left;
+}
+
+
+.fund_float .btn_c .num_active {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 16px;
+    color: #d9d9d9;
+    margin-top: 0px;
+}
+
+.fund_float .btn_c .after {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 1px;
+    height: 35px;
+    background-color: #555;
+}
+
+
+
+.fund_float .btn_s {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 25%;
+    height: 60px;
+    line-height: 60px;
+    background: #434343;
+    cursor: pointer;
+}
+
+
+.fund_float .btn_s .ico_share {
+	display: inline-block;
+    width: 22px;
+    height: 20px;
+    margin: 5px 4px 0 50px;
+    float: left;
+}
+
+.fund_float .btn_s .ico_share img {
+	width: 100%;
+}
+
+.fund_float .btn_s .txt_share {
+    display: inline-block;
+    margin-left: 7px;
+    font-size: 20px;
+    color: #fff;
+    vertical-align: top;
+    float: left;
+}
+
+.fund_float .btn_d {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 50%;
+    height: 60px;
+    line-height: 60px;
+    background: #dc287c;
+    border-radius: 0 7px 7px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.fund_float .btn_d span {
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    vertical-align: top;
+}

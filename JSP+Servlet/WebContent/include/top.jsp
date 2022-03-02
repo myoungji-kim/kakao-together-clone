@@ -6,7 +6,7 @@
 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}" />
 <div id="top_wrap">
 	<div id="wrap_logo">
-		<a class="mainLogo" href="/main"><img src="${imgSrc}/main_logo.png"></a>
+		<a class="mainLogo" href="/main"><img src="${imgSrc}/main_logo.svg"></a>
 	</div>
 	<nav id="wrap_topCate" class="" style="position: static; top: initial;">
 		<ul class="inner">
