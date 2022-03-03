@@ -7,6 +7,10 @@
 		f.method = "get";
 		f.submit();
 	}
+	
+	function search_delete(){
+		$('input[name=q]').val("");
+	}
 </script>
 
 
@@ -33,7 +37,11 @@
 <!-- 게시글 모음 -->
 <div class="group_fundlist">
 	<ul class="list_fund">
-		<c:if test="${searchList == null}">아직 아무것도 검색하지 않았어요!</c:if>
+		<c:if test="${searchList == null}">
+			<div class="search_none">
+				<span> 아직 아무것도 검색하지 않았어요! </span>
+			</div>
+		</c:if>
 		<c:forEach var="search" items="${searchList}" varStatus="status">
 		<li class="listcard">
 			<c:if test="${search.cate == 'fund'}">

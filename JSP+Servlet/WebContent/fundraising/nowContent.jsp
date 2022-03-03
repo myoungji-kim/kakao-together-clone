@@ -18,7 +18,6 @@
 
 	var httpRequest;
 	var gCheer;
-	
 	function cheer(cIdx, mIdx){
 		if (mIdx != 0){
 			httpRequest = new XMLHttpRequest();
@@ -43,18 +42,21 @@
 	}
 	
 	
-	function donate(){
-		
+	function donate_open(mIdx){
+		if (mIdx != 0){
+			$('#black_bg_donation').css("display", "block");
+			$('#wrap_donation').css("display", "block");
+		} else {
+			alert("로그인 후 이용 가능합니다");
+		}
 	}
+	
+	
 </script>
 
 <div id="wrap_content">
-	<c:if test="${login.idx eq null}">
-		<c:set var="loginIdx" value="0"/>
-	</c:if>
-	<c:if test="${login.idx ne null}">
-		<c:set var="loginIdx" value="${login.idx}"/>
-	</c:if>
+	<c:if test="${login.idx eq null}"><c:set var="loginIdx" value="0"/></c:if>
+	<c:if test="${login.idx ne null}"><c:set var="loginIdx" value="${login.idx}"/></c:if>
 	<!-- Title Content -->
 	<div class="wrap_top_summary">
 		<div class="cover">
@@ -82,7 +84,7 @@
 			<span class="tit_head">${content.head1}</span>
 			<span class="txt_body">${content.body1}</span>
 			<c:if test="${content.image1 ne null}">
-			<span class="img_body" style="background-image: url('${imgSrc}/for-test/${content.image1 }');"></span>
+			<span class="img_body" style="background-image: url('${imgSrc}/for-test/${content.image1}');"></span>
 			</c:if>
 			<c:if test="${content.youtube1 ne null}">
 			<div class="video_wrap">
@@ -90,6 +92,11 @@
 				</iframe>
 			</div>	
 			</c:if>	
+		</div>
+		
+		<div class="price_box">
+			<span class="txt_price">${content.pricestate}<span class="txt_won">원</span></span>
+			<span class="txt_state">${content.price}원 목표</span>
 		</div>
 	</div>
 	<!-- 수정하기 btn -->
@@ -111,7 +118,7 @@
 			<span class="ico_share"><img src="${imgSrc}/ico_share.svg"></span>
 			<span class="txt_share">공유</span>
 		</a>
-		<a class="btn_d" onclick="donate(${content.idx}, ${loginIdx})">
+		<a class="btn_d" onclick="donate_open(${loginIdx})">
 			<span>기부하기</span>
 		</a>
 	</div>
@@ -120,3 +127,5 @@
 
 
 <%@ include file="../include/footer.jsp" %>
+
+<%@ include file="./donationPopup.jsp" %>

@@ -21,6 +21,8 @@
 		<filter-name>LoginSessionFilter</filter-name>
 		<url-pattern>/mypage</url-pattern>
 		<url-pattern>/mypage.action</url-pattern>
+		<url-pattern>/mypage/mydonation</url-pattern>
+		<url-pattern>/mypage/mywrite</url-pattern>
 		<url-pattern>/write</url-pattern>
 		<url-pattern>/write.action</url-pattern>
 	</filter-mapping>

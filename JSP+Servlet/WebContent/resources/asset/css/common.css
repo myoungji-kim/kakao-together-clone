@@ -2,6 +2,8 @@
 @import url('./Kakao.css');
 
 
+.reset { padding:0px; margin:0px; clear: both; }
+
 a { text-decoration: none; color: black; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
@@ -341,6 +343,16 @@ input {
 	overflow: hidden;
 }
 
+.group_fundlist .list_fund .search_none {
+	padding: 150px 0px;
+	text-align: center;
+}
+
+.group_fundlist .list_fund .search_none span {
+	font-size: 20px;
+	color: #888;
+}
+
 .group_fundlist .list_fund li {
     float: left;
     position: relative;
@@ -385,9 +397,9 @@ input {
 }
 
 .group_fundlist .text_box .title {
+	height: 50px;
 	display: block;
 	overflow: hidden;
-    max-height: 50px;
     font-size: 17px;
     line-height: 25px;
     text-overflow: ellipsis;
@@ -407,7 +419,7 @@ input {
 .group_fundlist .text_box .state {
 	float: left;
     position: relative;
-    width: 45%;
+    width: 50%;
     height: 2px;
     margin-top: 24px;
 }
@@ -899,6 +911,34 @@ input {
 }
 
 
+#body_cont .price_box {
+	width: 700px;
+	margin: 50px auto;
+	border-top: 1px solid #cfcfcf;
+	text-align: center;
+	padding: 60px 0px 30px;
+}
+
+#body_cont .price_box .txt_price {
+	display: block;
+	color: #dc287c;
+	font-size: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 80px;
+    font-family: KakaoBold;
+}
+
+#body_cont .price_box .txt_won {
+	font-size: 25px;
+}
+
+#body_cont .price_box .txt_state {
+	font-size: 17px;
+	color: #444;
+}
+
+
 
 
 
@@ -1226,9 +1266,8 @@ input {
     right: 40px;
     width: 100px;
     bottom: 10px;
-    background-color: #434343;
+    background-color: #dc2855;
     border-radius: 7px;
-    filter: drop-shadow(0px 2px 2px rgba(140, 140, 140, 0.25));
 }
 
 #btn_update a {
@@ -1617,3 +1656,280 @@ input {
     color: #fff;
     vertical-align: top;
 }
+
+
+
+#wrap_donation {
+	z-index: 10000000;
+    position: fixed;
+    display: none;
+    top: 20%;
+    background-color: #fff;
+    width: 450px;
+	margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+
+#wrap_donation .form {
+	margin: 0;
+	padding: 0;
+}
+
+#wrap_donation .wrap_fund {
+    padding: 35px 24px 25px;
+}
+
+
+#wrap_donation .list_pay {
+	width: 100%;
+}
+
+#wrap_donation .list_pay .txt_tit {
+	display: inline-block;
+    font-size: 20px;
+	font-family: KakaoBold;   
+	color: #444;
+}
+
+#wrap_donation .list_pay .btn_close {
+	display: inline-block;
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin: -5px 5px 0px 0px;
+    cursor: pointer;
+}
+
+#wrap_donation .list_pay .btn_close img {
+	width: 100%;
+}
+
+#wrap_donation .list_pay .txt_info {
+	display: block;
+    margin-top: 11px;
+    font-size: 16px;
+    color: #666;
+}
+
+#wrap_donation .list_pay ul {
+	display: block;
+	margin: 15px auto;
+}
+
+#wrap_donation .list_pay ul li {
+    width: 23.5%;
+    margin: 0 0 2px 2px;
+}
+
+#wrap_donation .list_pay ul li a {
+	display: block;
+    width: 100%;
+    height: 38px;
+    border-radius: 2px;
+    line-height: 36px;
+    background-color: #9f9f9f;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #9f9f9f;
+}
+
+#wrap_donation .list_pay ul li span {
+	color: #fff;
+	font-size: 15px;
+}
+
+#wrap_donation .list_pay ul li:last-child a {
+	background-color: #fff;
+	border: 1px solid #333;
+}
+
+#wrap_donation .list_pay ul li:last-child span {
+	color: #222;
+}
+
+
+#wrap_donation .txt_price {
+	display: inline-block;
+	float: right;
+	font-size: 15px;
+    color: #444;
+    text-align: right;
+}
+
+#wrap_donation .price {
+	display: inline-block;
+	padding-right: 4px;
+    font-family: KakaoBold;
+    font-size: 22px;
+    color: #dc287c;
+    float: right;
+    margin-top: -5px;
+}
+
+#wrap_donation .write_box {
+	padding: 4px 0px 5px;
+}
+
+#wrap_donation .write_box .txt_tit {
+	display: inline-block;
+    font-size: 16px;
+    color: #444;
+    font-family: KakaoBold;
+    margin: 10px 0px 5px;
+}
+
+#wrap_donation .write_box .txt_limit {
+	display: inline-block;
+	float: right;
+    font-size: 15px;
+    color: #444;
+    font-family: KakaoLight;
+    margin: 10px 0px 5px;
+}
+
+#wrap_donation .write_box textarea {
+	width: 100%;
+    height: 84px;
+    float: left;
+    padding: 9px 13px;
+    border: 1px solid #e8e8e8;
+    border-radius: 2px;
+    font-size: 16px;
+    color: #444;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    outline: none;
+    font-family: KakaoLight;
+}
+
+
+#wrap_donation .wrap_btn_type {
+    position: relative;
+    margin: 0 24px;
+    padding-bottom: 35px;
+}
+
+
+#wrap_donation .wrap_btn_type .btn {
+	border-radius: 4px;
+    width: 100%;
+    margin: 0 0 12px;
+    background-color: #dc287c;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+#wrap_donation .wrap_btn_type .btn span {
+    display: inline-block;
+    width: 160px;
+    height: 48px;
+    margin: 0 4px;
+    vertical-align: top;
+    color: #fff;
+    font-size: 16px;
+    line-height: 49px;
+}
+
+#wrap_donation .donation_info {
+	margin-top: 10px;
+}
+
+#wrap_donation .donation_info span {
+	font-size: 13px;
+    color: #999;
+}
+
+
+#black_bg_donation {
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    display: none;
+    z-index: 99999;
+    width: 100%;
+    background-color: #000;
+    opacity: .3;
+}
+
+
+
+
+
+#mydonation_wrap {
+	width: 600px;
+    margin: 0 auto;
+    padding: 61px 0 100px;
+}
+
+#mydonation_wrap li:first-child {
+    padding-top: 0px;
+}
+
+#mydonation_wrap li {
+    width: 100%;
+}
+
+#mydonation_wrap .box {
+	padding: 15px 0px;
+	border-bottom: 1.5px solid #E0E0E0;
+}
+
+#mydonation_wrap .thumb_img {
+    overflow: hidden;
+    float: left;
+    width: 55px;
+    height: 55px;
+    border-radius: 5px;
+}
+
+#mydonation_wrap .thumb_img img {
+	object-fit: cover;
+	width: 100%;
+    height: 100%;
+}
+
+#mydonation_wrap .text_box {
+	padding-left: 75px;
+}
+
+#mydonation_wrap .title {
+	display: block;
+    overflow: hidden;
+    max-height: 62px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    font-weight: 400;
+    font-family: KakaoBold;
+    font-size: 20px;
+    line-height: 31px;
+    color: #444;
+}
+
+#mydonation_wrap .title .txt_price {
+	display: inline-block;
+	float: right;
+	font-size: 18px;
+	color: #FF8A57;
+}
+
+#mydonation_wrap .title .txt_won {
+	color: #666;
+	font-family: KakaoLight;
+	font-size: 16px;
+}
+
+#mydonation_wrap .date {
+    padding-top: 0px;
+    color: #666;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 20px;
+    vertical-align: top;
+}
+

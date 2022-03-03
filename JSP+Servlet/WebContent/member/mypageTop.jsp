@@ -13,7 +13,7 @@
 				<a href="/mypage/mywrite"><span <c:if test="${fn:contains(url, '/mypage/mywrite')}"> class="on"</c:if>>나의 글</span></a>
 			</li>
 			<li>
-				<a href="/Error404"><span <c:if test="${fn:contains(url, '/mypage/mydonation')}"> class="on"</c:if>>내 기부</span></a>
+				<a href="/mypage/mydonation"><span <c:if test="${fn:contains(url, '/mypage/mydonation')}"> class="on"</c:if>>내 기부</span></a>
 			</li>
 		</ul>
 	</div> <!-- end wrap_tab -->
