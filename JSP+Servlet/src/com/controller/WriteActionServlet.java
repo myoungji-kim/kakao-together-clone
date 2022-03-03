@@ -69,7 +69,6 @@ public class WriteActionServlet extends HttpServlet {
 			} else if (topic.equals("2")) { // epilogue - 모금후기
 				next = "/fundraising/epil";
 				System.out.println("2번으로 들어옴");
-
 			} else if (topic.equals("3")) { // campaign - 나눔캠페인
 				next = "/fundraising/campaign";
 				System.out.println("3번으로 들어옴");

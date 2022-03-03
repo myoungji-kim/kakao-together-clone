@@ -23,9 +23,6 @@ public class BoardDTO {
 	String enddate; // 종료일(프로모션용)
 	String cate;	// fund, prom ...
 	
-	
-	
-
 
 	public BoardDTO() {}
 
@@ -74,7 +71,7 @@ public class BoardDTO {
 	}
 	
 	
-	// update용
+	// NowContent update용
 	public BoardDTO(int idx, String topic, String title, String agency, int price, String image0, String head1,
 			String body1, String image1, String youtube1, String tag1, String tag2, String tag3, int writer,
 			String subtopic, String cate) {

@@ -24,10 +24,13 @@
 	<!-- Now 관련 -->
 	
 	<select id="selectAllNow" parameterType="hashmap" resultType="BoardDTO">
-		select idx, topic, title, agency, price, pricestate, writeday, 
+		select idx, topic, title, agency, price, b.sum_donation as pricestate, writeday, 
 			   cheer, image0, head1, body1, image1, youtube1, 
-			   tag1, tag2, tag3, subtopic, to_char(price, '999,999,999,999,999') as pricechar
-		from kakao_board 
+			   tag1, tag2, tag3, subtopic, 
+			   to_char(price, '999,999,999,999,999') as pricechar
+		from kakao_board a left outer join (select sum(donation) sum_donation, content_idx 
+											from kakao_donation group by content_idx) b
+        on a.idx = b.content_idx
 		where cate = #{cate} 
 			  <if test='subtopic != null'>
 			  	and subtopic = #{subtopic}
@@ -36,11 +39,13 @@
 	</select>
 
 	<select id="selectNowContent" parameterType="hashmap" resultType="BoardDTO">
-		select idx, topic, title, agency, price, pricestate, writeday, 
+		select idx, topic, title, agency, price, b.sum_donation as pricestate, writeday, 
 			   cheer, image0, head1, body1, image1, youtube1, 
 			   tag1, tag2, tag3, writer, subtopic, 
 			   to_char(price, '999,999,999,999,999') as pricechar, cate 
-		from kakao_board
+		from kakao_board a left outer join (select sum(donation) sum_donation, content_idx 
+											from kakao_donation group by content_idx) b
+		on a.idx = b.content_idx
 		where idx = #{idx} and cate = 'fund'
 	</select>
 	
@@ -139,7 +144,7 @@
 	<select id="selectAllMywrite" parameterType="hashmap" resultType="BoardDTO">
 		SELECT * FROM (
 			    SELECT ROWNUM rn, b.*
-			        FROM ( select a.idx, a.topic, a.title, a.agency, a.price, a.pricestate, a.cheer,
+			        FROM ( select a.idx, a.topic, a.title, a.agency, a.price, a.cheer,
 			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
 			        			  a.writer, a.subtopic, a.cate,
 			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 
@@ -163,7 +168,7 @@
 	
 	<!-- Search -->
 	<select id="searchOne" parameterType="hashmap" resultType="BoardDTO">
-		select a.idx, a.topic, a.title, a.agency, a.price, a.pricestate, a.cheer,
+		select a.idx, a.topic, a.title, a.agency, a.price, a.cheer,
 			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
 			        			  a.writer, a.subtopic, a.cate,
 			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 

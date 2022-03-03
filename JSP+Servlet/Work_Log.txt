@@ -1,21 +1,30 @@
 	
 	[To Do]
 	
+	- 댓글 코멘트 추가
+	- 모금후기 게시판 html
+	- 모금후기 페이징  
+	
 	- fileUpload 적용하기 (이미지 업로드)
 		=> lib에 jar 추가
 			: fileupload (commons-fileupload-1.4.jar, commons-fileupload-1.2.2.jar)
 			: io (commons-io-2.11.0.jar, org.apache.commons.io-2.0.1.jar)
 		=> 계속 import 오류난다. jdk11과 버전이 맞지 않는 듯 싶은데... 바꿔도 오류가 똑같다 ㅠ
 		=> Spring Maven에서 추가해보자!
-	- 모금후기 게시판 html
-	- 모금후기 페이징  
+		
 	- sysout 대신 logger 사용하기
-	- 기부하기 기능 추가
 	- 모금중 무한 스크롤 기능 추가
 
 	
 	
 	[Success]
+	
+	(03/03)
+	- 마이페이지 내 기부에서 확인
+	- 기부하기 기능 추가
+	- Fundraising 게시글에서 기부 금액 확인 추가
+		=> 쿼리짜기의 지옥에 갇힐 뻔했다!!!!!
+	
 	
 	(03/02)
 	- Fundraising 게시글에서 scroll 위치에 따라 하단바 불투명도 조절
