@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.config.BoardMapper">
+
+	<!-- count Total -->
+	<select id="countTotalProm" parameterType="hashmap" resultType="int">
+		select count(*)
+		from kakao_board
+		where cate = 'prom'
+			<if test='phase == 2'> and enddate <![CDATA[ >= ]]> TO_CHAR(SYSDATE, 'YYYY.MM.DD') </if>
+		  	<if test='phase == 3'> and enddate <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'YYYY.MM.DD') </if>
+	</select>
+	
+	<select id="countTotalMywrite" parameterType="hashmap" resultType="int">
+		select count(*)
+		from kakao_board
+		where writer = #{writer}
+	</select>
+
+
+
+	<!-- Now 관련 -->
+	
+	<select id="selectAllNow" parameterType="hashmap" resultType="BoardDTO">
+		select idx, topic, title, agency, price, b.sum_donation as pricestate, writeday, 
+			   cheer, image0, head1, body1, image1, youtube1, 
+			   tag1, tag2, tag3, subtopic, 
+			   to_char(price, '999,999,999,999,999') as pricechar
+		from kakao_board a left outer join (select sum(donation) sum_donation, content_idx 
+											from kakao_donation group by content_idx) b
+        on a.idx = b.content_idx
+		where cate = #{cate} 
+			  <if test='subtopic != null'>
+			  	and subtopic = #{subtopic}
+			  </if>
+		order by idx ${sort}
+	</select>
+
+	<select id="selectNowContent" parameterType="hashmap" resultType="BoardDTO">
+		select idx, topic, title, agency, price, b.sum_donation as pricestate, writeday, 
+			   cheer, image0, head1, body1, image1, youtube1, 
+			   tag1, tag2, tag3, writer, subtopic, 
+			   to_char(price, '999,999,999,999,999') as pricechar, cate 
+		from kakao_board a left outer join (select sum(donation) sum_donation, content_idx 
+											from kakao_donation group by content_idx) b
+		on a.idx = b.content_idx
+		where idx = #{idx} and cate = 'fund'
+	</select>
+	
+	<select id="selectNowContentTag" parameterType="string" resultType="string">
+		select name
+		from kakao_now_subtopic
+		where code = #{code}
+	</select>
+	
+	<insert id="insertNow" parameterType="BoardDTO">
+		insert into kakao_board (idx, topic, title, agency, price, writeday, 
+								image0, head1, body1, image1, youtube1, 
+								tag1, tag2, tag3, subtopic, writer, cate) 
+		values (kakao_board_seq.nextval, #{topic}, #{title}, #{agency}, #{price}, sysdate, 
+				#{image0}, #{head1}, #{body1}, #{image1}, #{youtube1}, 
+				#{tag1}, #{tag2}, #{tag3}, #{subtopic}, #{writer}, 'fund')
+	</insert>
+	
+	<update id="updateNow" parameterType="BoardDTO">
+		update kakao_board
+		set title=#{title}, 
+			 agency=#{agency}, 
+			 price=#{price}, 
+			 image0=#{image0}, 
+			 head1=#{head1}, 
+			 body1=#{body1}, 
+			 image1=#{image1}, 
+			 youtube1=#{youtube1}, 
+			 tag1=#{tag1}, 
+			 tag2=#{tag2}, 
+			 tag3=#{tag3}
+		where idx=#{idx}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- Promotion 관련 -->
+	<select id="selectAllProm" parameterType="hashmap" resultType="BoardDTO">
+		SELECT * FROM (
+			    SELECT ROWNUM rn, b.*
+			        FROM ( select idx, title, agency, to_char(writeday, 'YYYY.MM.DD') as writeday, 
+							   image0, head1, body1, image1, youtube1, TO_CHAR(enddate, 'YYYY.MM.DD') as enddate 
+						from kakao_board
+						where cate = 'prom' 
+							  <if test='phase == 2'> and enddate <![CDATA[ >= ]]> TO_CHAR(SYSDATE, 'YYYY.MM.DD') </if>
+							  <if test='phase == 3'> and enddate <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'YYYY.MM.DD') </if>
+						order by idx desc ) b
+		) WHERE rn between #{page.contentBegin} and #{page.contentEnd}
+	</select>
+	
+	
+	<select id="selectPromContent" parameterType="hashmap" resultType="BoardDTO">
+		select idx, title, agency, writeday, 
+			   image0, head1, body1, image1, youtube1, 
+			   writer, cate, TO_CHAR(enddate, 'YYYY.MM.DD') as enddate
+		from kakao_board
+		where idx=#{idx} and cate='prom'
+		order by idx desc
+	</select>
+	
+	<insert id="insertProm" parameterType="BoardDTO">
+		insert into kakao_board (idx, title, agency, writeday, image0, 
+								 head1, body1, image1, youtube1, writer, cate, enddate) 
+		values (kakao_board_seq.nextval, #{title}, #{agency}, sysdate, #{image0}, 
+				#{head1}, #{body1}, #{image1}, #{youtube1}, #{writer}, #{cate}, TO_DATE(#{enddate}, 'YYYY-MM-DD'))
+	</insert>
+	
+	<update id="updateProm" parameterType="BoardDTO">
+		update kakao_board
+		set title=#{title}, 
+			 agency=#{agency}, 
+			 price=#{price}, 
+			 image0=#{image0}, 
+			 head1=#{head1}, 
+			 body1=#{body1}, 
+			 image1=#{image1}, 
+			 youtube1=#{youtube1}, 
+			 enddate=#{enddate}
+		where idx=#{idx} and cate='prom'
+	</update>
+	
+	
+	
+	
+	<!-- Mywrite 관련 -->
+	<select id="selectAllMywrite" parameterType="hashmap" resultType="BoardDTO">
+		SELECT * FROM (
+			    SELECT ROWNUM rn, b.*
+			        FROM ( select a.idx, a.topic, a.title, a.agency, a.price, a.cheer,
+			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
+			        			  a.writer, a.subtopic, a.cate,
+			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 
+							      TO_CHAR(enddate, 'YYYY.MM.DD') as enddate 
+						from kakao_board a
+						where writer = #{writer} 
+						order by idx desc ) b
+		) WHERE rn between #{page.contentBegin} and #{page.contentEnd}
+	</select>
+	
+	
+	
+	
+	<!-- Delete -->
+	<delete id="deleteOne" parameterType="int">
+		delete from kakao_board
+		where idx=#{idx}
+	</delete>
+	
+	
+	
+	<!-- Search -->
+	<select id="searchOne" parameterType="hashmap" resultType="BoardDTO">
+		select a.idx, a.topic, a.title, a.agency, a.price, a.cheer,
+			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
+			        			  a.writer, a.subtopic, a.cate,
+			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 
+							      TO_CHAR(enddate, 'YYYY.MM.DD') as enddate
+		from kakao_board a
+		where title LIKE '%${key}%'
+		order by idx desc
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+

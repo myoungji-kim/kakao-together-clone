@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.config.CheerMapper">
+	<select id="selectCheer" parameterType="int" resultType="int">
+		select count(content_idx) 
+		from kakao_cheer
+		where content_idx=#{content_idx}
+	</select>
+	
+	<insert id="insertCheer" parameterType="hashmap">
+		insert into kakao_cheer(content_idx, member_idx, cheerdate)
+		values (#{content_idx}, #{member_idx}, sysdate)
+	</insert>
+	
+	<delete id="deleteCheer" parameterType="int">
+		delete from kakao_cheer
+		where content_idx=#{content_idx}
+	</delete>
+</mapper>
+
+
+
+

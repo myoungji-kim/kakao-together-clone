@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.config.MemberMapper">
+	<select id="selectMember" parameterType="map" resultType="MemberDTO">
+		select idx, userid, passwd, 
+			   username, 
+			   phone1, phone2, phone3, 
+			   email1, email2, 
+			   post, addr1, addr2, 
+			   to_char(joindate, 'YYYY/MM/DD') as joindate
+		from kakao_member 
+		where userid=#{userid} and passwd=#{passwd} 
+	</select>
+	
+	<insert id="insertMember" parameterType="MemberDTO">
+		INSERT INTO kakao_member(idx, userid, passwd, username, phone1, phone2, phone3, email1, email2, post, addr1, addr2, joindate) 
+		VALUES (kakao_mem_seq.nextval, #{userid}, #{passwd}, #{username}, #{phone1}, #{phone2}, #{phone3}, #{email1}, #{email2}, #{post}, #{addr1}, #{addr2}, sysdate)
+	</insert>
+	
+	<select id="selectForMypage" parameterType="int" resultType="MemberDTO">
+		select idx, userid, passwd, 
+			   username, 
+			   phone1, phone2, phone3, 
+			   email1, email2, 
+			   post, addr1, addr2, 
+			   to_char(joindate, 'YYYY/MM/DD') as joindate
+		from kakao_member 
+		where idx=#{idx}
+	</select>
+	
+	<select id="login" parameterType="map" resultType="MemberDTO">
+		select idx, userid, username 
+		from kakao_member 
+		where userid=#{userid} and passwd=#{passwd} 
+	</select>
+	
+	<select id="idDuplicateCheck" parameterType="string" resultType="MemberDTO">
+		select userid
+		from kakao_member 
+		where userid = #{userid}
+	</select>
+	
+	<update id="updateMember" parameterType="MemberDTO">
+		update kakao_member
+		set phone1 = #{phone1}, 
+			phone2 = #{phone2}, 
+			phone3 = #{phone3}, 
+			email1 = #{email1}, 
+			email2 = #{email2}, 
+			post = #{post}, 
+			addr1 = #{addr1}, 
+			addr2 = #{addr2}
+		where idx = #{idx}
+	</update>
+</mapper>
+
+
+
+
