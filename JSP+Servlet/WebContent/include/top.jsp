@@ -31,10 +31,24 @@
 				</a>
 			</li>
 			<li>
-				<a href="/Error404"><span>마음날씨</span></a>
+				<a href="/moreinfo">	
+					<c:if test="${fn:contains(url, '/moreinfo')}">
+						<span class="on">더보기</span>
+					</c:if>
+					<c:if test="${not fn:contains(url, '/moreinfo')}">
+						<span>더보기</span>
+					</c:if>	
+				</a>
 			</li>
 			<li>
-				<a href="/Error404"><span>더보기</span></a>
+				<a href="/sendmail">
+					<c:if test="${fn:contains(url, '/sendmail')}">
+						<span class="on">Contact</span>
+					</c:if>
+					<c:if test="${not fn:contains(url, '/sendmail')}">
+						<span>Contact</span>
+					</c:if>					
+				</a>
 			</li>
 		</ul>
 	</nav>

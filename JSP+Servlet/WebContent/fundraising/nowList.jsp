@@ -21,8 +21,8 @@
 			</li>
 			<li>
 				<a <c:if test="${param.subtopic=='B'}"> class="on"</c:if> href="/fund/now?subtopic=B&sort=1">
-					<img src="${imgSrc}/ico_woman.png">
-					<span>여성</span>
+					<img src="${imgSrc}/ico_earth.png">
+					<span>지구촌</span>
 				</a>
 			</li>
 		</ul>

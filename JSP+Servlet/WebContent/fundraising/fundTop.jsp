@@ -10,10 +10,10 @@
 				<a href="/fund/now?sort=1"><span <c:if test="${url eq '/main' or fn:contains(url, '/fund/now')}"> class="on"</c:if>>모금중</span></a>
 			</li>
 			<li>
-				<a href="/Error404"><span <c:if test="${fn:contains(url, '/fund/epilogue')}"> class="on"</c:if>>모금후기</span></a>
+				<a href="/fund/epil?sort=1"><span <c:if test="${fn:contains(url, '/fund/epil')}"> class="on"</c:if>>모금후기</span></a>
 			</li>
 			<li>
-				<a href="/Error404"><span>나눔캠페인</span></a>
+				<a href="/Error404"><span <c:if test="${fn:contains(url, '/fund/campaign')}"> class="on"</c:if>>나눔캠페인</span></a>
 			</li>
 		</ul>
 	</div> <!-- end wrap_tab -->

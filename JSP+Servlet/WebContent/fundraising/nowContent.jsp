@@ -19,28 +19,21 @@
 	var httpRequest;
 	var gCheer;
 	function cheer(cIdx, mIdx){
-		if (mIdx != 0){
-			httpRequest = new XMLHttpRequest();
-			httpRequest.onreadystatechange=responseFun;
+		if (mIdx) {
+			$.ajax({
+				type:"get",
+				url:"/fund/insertCheer?cIdx="+cIdx+"&mIdx="+mIdx,
+				dataType:"html",
+				success:function(res){
+					alert("응원해 주셔서 감사합니다♬");
+					$('.num_active').text(gCheer);
+				}
+			});
 			gCheer = parseInt($('.num_active').text()) + 1;
-			
-			var url = "/fund/insertCheer?cIdx="+cIdx+"&mIdx="+mIdx;
-			
-			httpRequest.open("get", url, true);
-			httpRequest.send(null);
 		} else {
 			alert("로그인 후 이용 가능합니다");
 		}
 	}
-	
-	
-	function responseFun(){
-		if(httpRequest.readyState==4 & httpRequest.status == 200){
-			alert("응원해 주셔서 감사합니다♬");
-			$('.num_active').text(gCheer);
-		}
-	}
-	
 	
 	function donate_open(mIdx){
 		if (mIdx != 0){
@@ -97,6 +90,25 @@
 		<div class="price_box">
 			<span class="txt_price">${content.pricestate}<span class="txt_won">원</span></span>
 			<span class="txt_state">${content.price}원 목표</span>
+		</div>
+		
+		<div class="comments_wrap">
+			<div class="num_box">
+				<span class="txt_tit">댓글</span>
+				<span class="txt_num">${commentsNum}</span>
+			</div>
+			<c:forEach var="comments" items="${commentsList}">
+				<div class="comments_box">
+					<span class="txt_info">
+						<span>${comments.userid }</span>
+						<span>${comments.donation }원</span>
+						<span>${comments.date_donation }</span>
+					</span>
+					<div class="txt_cmt">
+						<span>${comments.comments }</span>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 	<!-- 수정하기 btn -->

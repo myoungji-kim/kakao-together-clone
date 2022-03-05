@@ -42,8 +42,15 @@
 			mesg = "썸네일, "+mesg;
 		}
 		
+		// 기부 금액
+		if ($('[name=pricestate]').val()=="" && $('input:radio[name=cate]:checked').val() == 'fund' && $("select[name='topic']").val() == "2"){
+			mesg = "기부 금액, "+mesg;
+		} else if (!$.isNumeric($('[name=pricestate]').val()) && $('[name=pricestate]').val()!=""){
+			mesg = "기부 금액(숫자만 가능), "+mesg;
+		}
+		
 		// 목표 금액
-		if ($('[name=price]').val()=="" && $('input:radio[name=cate]:checked').val() == 'fund'){
+		if ($('[name=price]').val()=="" && $('input:radio[name=cate]:checked').val() == 'fund' && $('select[name=topic]').val() != "3"){
 			mesg = "목표 금액, "+mesg;
 		} else if (!$.isNumeric($('[name=price]').val()) && $('[name=price]').val()!=""){
 			mesg = "목표 금액(숫자만 가능), "+mesg;
@@ -95,10 +102,19 @@
 		}
 	}
 	
-	function showSubTopicSelect(){
+	function showSubTopicSelect() { 
 		if ($('select[name=topic]').val() == "1"){
 			$('#subtopic').css("visibility", "visible");
+			$('#pricestate').css("display", "none");
+			$('#price').css("display", "");
+			
+		} else if ($('select[name=topic]').val() == "2"){
+			$('#pricestate').css("display", "");
+			$('#subtopic').css("visibility", "hidden");
+			$('#price').css("display", "");
+			
 		} else {
+			$('#pricestate').css("display", "none");
 			$('#subtopic').css("visibility", "hidden");
 		}
 	}
@@ -114,6 +130,7 @@
 		if ($('input[name=cCate]').val() == 'fund'){
 			$(':radio[id="fund"]').attr("checked", true);
 			$("select[name='topic']").val($('input[name="tTopic"]').val());
+			$('#tag_wrap').css("display", "");
 		}
 		
 		// cate가 prom일 때 라디오 
@@ -124,6 +141,13 @@
 		// fund > topic이 1일 때 세부 주제 보여주기
 		if ($("select[name='topic']").val() == "1"){
 			$("select[name='subtopic']").val($('input[name="sSubtopic"]').val());
+		}
+		
+		// fund > topic이 2일 때 기부 금액 보여주기
+		if ($("select[name='topic']").val() == "2"){
+			$('#pricestate').css("display", "");
+		} else {
+			$('#pricestate').css("display", "none");
 		}
 		
 		// prom일 때 enddate 입력창 보여주기
@@ -165,6 +189,7 @@
 		<c:set var="title" value="${content.title}"/>
 		<c:set var="writer" value="${content.writer}"/>
 		<c:set var="price" value="${content.price}"/>
+		<c:set var="pricestate" value="${content.pricestate}"/>
 		<c:set var="image0" value="${content.image0}"/>
 		<c:set var="head1" value="${content.head1}"/>
 		<c:set var="body1" value="${content.body1}"/>
@@ -183,6 +208,7 @@
 		<c:set var="title" value=""/>
 		<c:set var="writer" value="${login.idx}"/>
 		<c:set var="price" value=""/>
+		<c:set var="pricestate" value=""/>
 		<c:set var="image0" value=""/>
 		<c:set var="head1" value=""/>
 		<c:set var="body1" value=""/>
@@ -233,13 +259,12 @@
 					<option value="0">카테고리 선택</option>
 					<option value="1">모금중</option>
 					<option value="2">모금후기</option>
-					<option value="3">나눔캠페인</option>
 				</select> 
 				<!-- '모금중'일 경우 주제 선택 -->
 				<select id="subtopic" name="subtopic" class="subtopic">
 					<option value="0">주제 선택</option>
 					<option value="A">어린이</option>
-					<option value="B">여성</option>
+					<option value="B">지구촌</option>
 				</select>
 			</td>
 			<td>
@@ -247,8 +272,12 @@
 			</td>
 		</tr>
 		<tr class="tr_oneLine" id="price" style="display:<c:if test="${cate != 'fund'}">none</c:if>">
-			<th id="price"><span>목표 금액</span></th>
+			<th><span>목표 금액</span></th>
 			<td colspan="2"><div class="bottom_line"><input type="text" name="price" placeholder="단위를 제외한 숫자를 적어주세요 (ex. 1000000)" value="${price}" autocomplete="off"></div></td>
+		</tr>
+		<tr class="tr_oneLine" id="pricestate" style="display:<c:if test="${cate != 'fund' && topic != '2'}">none</c:if>">
+			<th><span>기부 받은 금액</span></th>
+			<td colspan="2"><div class="bottom_line"><input type="text" name="pricestate" placeholder="단위를 제외한 숫자를 적어주세요 (ex. 1000000)" value="${pricestate}" autocomplete="off"></div></td>
 		</tr>
 		<tr class="tr_oneLine">
 			<th>썸네일 등록</th>
@@ -270,7 +299,7 @@
 			<th>첨부영상</th>
 			<td colspan="2"><div class="bottom_line"><input type="text" id="youtube1" name="youtube1" value="${youtube1}" placeholder="유튜브 url을 입력해주세요"></div></td>
 		</tr>
-		<tr id = "tag_wrap" style="display: none">
+		<tr id="tag_wrap" style="display: none">
 			<th class="tr_oneLine">태그 설정</th>
 			<td colspan="2">
 				<div class="input_tag"><input type="text" name="tag1" value="${tag1}" placeholder="태그1 (필수)"></div>

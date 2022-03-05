@@ -3,5 +3,5 @@
 <%@ include file="./include/header.jsp" %>
 <%@ include file="./include/top.jsp" %>
 <%@ include file="./fundraising/fundTop.jsp" %>
-<%@ include file="./fundraising/epilogueList.jsp" %>
+<%@ include file="./fundraising/epilList.jsp" %>
 <%@ include file="./include/footer.jsp" %>

@@ -13,7 +13,7 @@
 				</span>
 				<div class="text_box">
 					<span class="title">
-						${mydonation.title}
+						<span class="txt_title"><span>${mydonation.title}</span></span>
 						<span class="txt_price">
 							${mydonation.donation}
 							<span class="txt_won">원</span>
