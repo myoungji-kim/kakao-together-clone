@@ -22,16 +22,15 @@
 
 
 	<!-- Now 관련 -->
-	
 	<select id="selectAllNow" parameterType="hashmap" resultType="BoardDTO">
 		select idx, topic, title, agency, price, b.sum_donation as pricestate, writeday, 
-			   cheer, image0, head1, body1, image1, youtube1, 
+			   image0, head1, body1, image1, youtube1, 
 			   tag1, tag2, tag3, subtopic, 
 			   to_char(price, '999,999,999,999,999') as pricechar
 		from kakao_board a left outer join (select sum(donation) sum_donation, content_idx 
 											from kakao_donation group by content_idx) b
         on a.idx = b.content_idx
-		where cate = #{cate} 
+		where cate = #{cate} and topic = '1'
 			  <if test='subtopic != null'>
 			  	and subtopic = #{subtopic}
 			  </if>
@@ -40,7 +39,7 @@
 
 	<select id="selectNowContent" parameterType="hashmap" resultType="BoardDTO">
 		select idx, topic, title, agency, price, b.sum_donation as pricestate, writeday, 
-			   cheer, image0, head1, body1, image1, youtube1, 
+			   image0, head1, body1, image1, youtube1, 
 			   tag1, tag2, tag3, writer, subtopic, 
 			   to_char(price, '999,999,999,999,999') as pricechar, cate 
 		from kakao_board a left outer join (select sum(donation) sum_donation, content_idx 
@@ -49,9 +48,9 @@
 		where idx = #{idx} and cate = 'fund'
 	</select>
 	
-	<select id="selectNowContentTag" parameterType="string" resultType="string">
+	<select id="selectContentTag" parameterType="string" resultType="string">
 		select name
-		from kakao_now_subtopic
+		from kakao_subtopic
 		where code = #{code}
 	</select>
 	
@@ -82,12 +81,49 @@
 	
 	
 	
+	<!-- Epilogue 관련 -->
+	<select id="selectAllEpil" parameterType="hashmap" resultType="BoardDTO">
+		select idx, topic, title, agency, price, pricestate, writeday, 
+			   image0, head1, body1, image1, youtube1, 
+			   tag1, tag2, tag3, 
+			   to_char(price, '999,999,999,999,999') as pricechar
+		from kakao_board 
+		where cate = 'fund' and topic = '2'
+		order by idx ${sort}
+	</select>
 	
+	<insert id="insertEpil" parameterType="BoardDTO">
+		insert into kakao_board (idx, topic, title, agency, price, pricestate, writeday, image0, head1, 
+							body1, image1, youtube1, tag1, tag2, tag3, writer, cate, subtopic)
+		values (kakao_board_seq.nextval, #{topic}, #{title}, #{agency}, #{price}, #{pricestate}, sysdate, #{image0}, #{head1}, 
+				#{body1}, #{image1}, #{youtube1}, #{tag1}, #{tag2}, #{tag3}, #{writer}, 'fund', 'Z')
+	</insert>
 	
+	<select id="selectEpilContent" parameterType="hashmap" resultType="BoardDTO">
+		select idx, topic, title, agency, price, pricestate, writeday, 
+			   image0, head1, body1, image1, youtube1, 
+			   tag1, tag2, tag3, writer,  
+			   to_char(price, '999,999,999,999,999') as pricechar, cate, subtopic
+		from kakao_board
+		where idx = #{idx} and cate = 'fund'
+	</select>
 	
-	
-	
-	
+	<update id="updateEpil" parameterType="BoardDTO">
+		update kakao_board
+		set title=#{title}, 
+			 agency=#{agency}, 
+			 price=#{price}, 
+			 pricestate=#{pricestate}, 
+			 image0=#{image0}, 
+			 head1=#{head1}, 
+			 body1=#{body1}, 
+			 image1=#{image1}, 
+			 youtube1=#{youtube1}, 
+			 tag1=#{tag1}, 
+			 tag2=#{tag2}, 
+			 tag3=#{tag3}
+		where idx=#{idx}
+	</update>
 	
 	
 	
@@ -144,7 +180,7 @@
 	<select id="selectAllMywrite" parameterType="hashmap" resultType="BoardDTO">
 		SELECT * FROM (
 			    SELECT ROWNUM rn, b.*
-			        FROM ( select a.idx, a.topic, a.title, a.agency, a.price, a.cheer,
+			        FROM ( select a.idx, a.topic, a.title, a.agency, a.price, 
 			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
 			        			  a.writer, a.subtopic, a.cate,
 			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 
@@ -168,7 +204,7 @@
 	
 	<!-- Search -->
 	<select id="searchOne" parameterType="hashmap" resultType="BoardDTO">
-		select a.idx, a.topic, a.title, a.agency, a.price, a.cheer,
+		select a.idx, a.topic, a.title, a.agency, a.price, 
 			        			  a.image0, a.head1, a.body1, a.image1, a.youtube1, a.tag1, a.tag2, a.tag3,
 			        			  a.writer, a.subtopic, a.cate,
 			        		      TO_CHAR(writeday, 'YYYY.MM.DD') as writeday, 

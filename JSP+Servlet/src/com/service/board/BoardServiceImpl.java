@@ -69,12 +69,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public String selectNowContentTag(String code) throws Exception {
+	public String selectContentTag(String code) throws Exception {
 		String name = null;
 		SqlSession session = MySqlSessionFactory.getSession();
 		try {
 			BoardDAO dao = new BoardDAO();
-			name = dao.selectNowContentTag(session, code);
+			name = dao.selectContentTag(session, code);
 		} finally {
 			session.close();
 		}
@@ -222,7 +222,58 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+	@Override
+	public int insertEpil(BoardDTO dto) throws Exception {
+		int num = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			num = dao.insertEpil(session, dto);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
 
-	
+	@Override
+	public List<BoardDTO> selectAllEpil(HashMap<String, Object> map) throws Exception {
+		List<BoardDTO> list = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			list = dao.selectAllEpil(session, map);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	@Override
+	public BoardDTO selectEpilContent(HashMap<String, Object> map) throws Exception {
+		BoardDTO dto = null;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			dto = dao.selectEpilContent(session, map);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+
+	@Override
+	public int updateEpil(BoardDTO dto) throws Exception {
+		int num = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			BoardDAO dao = new BoardDAO();
+			num = dao.updateEpil(session, dto);
+			session.commit();
+		} finally {
+			session.close();
+		}
+		return num;
+	}
 	
 }

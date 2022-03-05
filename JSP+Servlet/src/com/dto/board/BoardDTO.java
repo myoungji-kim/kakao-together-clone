@@ -6,7 +6,7 @@ public class BoardDTO {
 	String title;	// 글 제목
 	String agency;	// 작성자 이름(string)
 	int price;		// 목표 모금액
-	int pricestate;	// 현재 모금액
+	int pricestate;	// 기부 받은 금액
 	String writeday;// 작성일
 	int cheer;		// 응원수
 	String image0;	// 썸네일
@@ -146,6 +146,47 @@ public class BoardDTO {
 		this.writer = writer;
 		this.enddate = enddate;
 		this.cate = cate;
+	}
+	
+	public void setInsertEpil(String topic, String title, String agency, int price, int pricestate,
+			String image0, String head1, String body1, String image1, String youtube1, 
+			String tag1, String tag2, String tag3, int writer, String cate) {
+		setTopic(topic);
+		setTitle(title);
+		setAgency(agency);
+		setPrice(price);
+		setPricestate(pricestate);
+		setImage0(image0);
+		setHead1(head1);
+		setBody1(body1);
+		setImage1(image1);
+		setYoutube1(youtube1);
+		setTag1(tag1);
+		setTag2(tag2);
+		setTag3(tag3);
+		setWriter(writer);
+		setCate(cate);
+	}
+	
+	public void setUpdateEpil(int idx, String topic, String title, String agency, int price, int pricestate,
+			String image0, String head1, String body1, String image1, String youtube1, 
+			String tag1, String tag2, String tag3, int writer, String cate) {
+		setIdx(idx);
+		setTopic(topic);
+		setTitle(title);
+		setAgency(agency);
+		setPrice(price);
+		setPricestate(pricestate);
+		setImage0(image0);
+		setHead1(head1);
+		setBody1(body1);
+		setImage1(image1);
+		setYoutube1(youtube1);
+		setTag1(tag1);
+		setTag2(tag2);
+		setTag3(tag3);
+		setWriter(writer);
+		setCate(cate);
 	}
 
 

@@ -13,6 +13,21 @@
 		from kakao_donation a left outer join kakao_board b
 		on a.content_idx = b.idx
 		where a.member_idx = #{member_idx}
+		order by a.date_donation desc
+	</select>
+	
+	<select id="countComments" parameterType="hashmap" resultType="int">
+		select count(comments) num
+		from kakao_donation
+		where content_idx = #{idx}
+	</select>
+		
+	<select id="selectComments" parameterType="hashmap" resultType="CommentsDTO">
+		select a.comments, b.userid, a.donation, TO_CHAR(a.date_donation, 'YY.MM.DD') date_donation
+		from kakao_donation a left outer join kakao_member b
+		on a.member_idx = b.idx
+		where a.content_idx = #{idx} and a.comments is not null
+		order by a.date_donation desc
 	</select>
 </mapper>
 

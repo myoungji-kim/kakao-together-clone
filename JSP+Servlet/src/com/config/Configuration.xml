@@ -13,6 +13,7 @@
     <typeAlias type="com.dto.member.MemberDTO" alias="MemberDTO"/>
     <typeAlias type="com.dto.board.BoardDTO" alias="BoardDTO"/>
     <typeAlias type="com.dto.donation.MydonationDTO" alias="MydonationDTO"/>
+    <typeAlias type="com.dto.donation.CommentsDTO" alias="CommentsDTO"/>
   </typeAliases>
   	
   <environments default="development">

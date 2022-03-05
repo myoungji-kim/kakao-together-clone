@@ -9,7 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.dto.board.BoardDTO;
 
 public class BoardDAO {
-	public List<BoardDTO> selectAllNow(SqlSession session, HashMap<String, Object> map){
+	// Now
+	public List<BoardDTO> selectAllNow(SqlSession session, HashMap<String, Object> map) throws Exception {
 		return session.selectList("com.config.BoardMapper.selectAllNow", map);
 	}
 	
@@ -17,8 +18,8 @@ public class BoardDAO {
 		return session.selectOne("com.config.BoardMapper.selectNowContent", map);
 	}
 	
-	public String selectNowContentTag(SqlSession session, String code) throws Exception {
-		return session.selectOne("com.config.BoardMapper.selectNowContentTag", code);
+	public String selectContentTag(SqlSession session, String code) throws Exception {
+		return session.selectOne("com.config.BoardMapper.selectContentTag", code);
 	}
 	
 	public int insertNow(SqlSession session, BoardDTO dto) throws Exception {
@@ -30,17 +31,30 @@ public class BoardDAO {
 	}
 	
 	
+	// Epil
+	public int insertEpil(SqlSession session, BoardDTO dto) throws Exception {
+		return session.insert("com.config.BoardMapper.insertEpil", dto);
+	}
+	
+	public int updateEpil(SqlSession session, BoardDTO dto) throws Exception {
+		return session.update("com.config.BoardMapper.updateEpil", dto);
+	}
+	
+	public List<BoardDTO> selectAllEpil(SqlSession session, HashMap<String, Object> map) throws Exception {
+		return session.selectList("com.config.BoardMapper.selectAllEpil", map);
+	}
+	
+	public BoardDTO selectEpilContent(SqlSession session, HashMap<String, Object> map) throws Exception {
+		return session.selectOne("com.config.BoardMapper.selectEpilContent", map);
+	}
 	
 	
-
-	
-	
-	
+	// Prom
 	public List<BoardDTO> selectAllProm(SqlSession session, HashMap<String, Object> map) throws Exception {
 		return session.selectList("com.config.BoardMapper.selectAllProm", map);
 	} 
 	
-	public BoardDTO selectPromContent(SqlSession session, HashMap<String, Object> map) {
+	public BoardDTO selectPromContent(SqlSession session, HashMap<String, Object> map) throws Exception {
 		return session.selectOne("com.config.BoardMapper.selectPromContent", map);
 	}
 	
@@ -48,7 +62,7 @@ public class BoardDAO {
 		return session.insert("com.config.BoardMapper.insertProm", dto);
 	}
 	
-	public int updateProm(SqlSession session, BoardDTO dto) {
+	public int updateProm(SqlSession session, BoardDTO dto) throws Exception {
 		System.out.println(dto.toString());
 		return session.update("com.config.BoardMapper.updateProm", dto);
 	}

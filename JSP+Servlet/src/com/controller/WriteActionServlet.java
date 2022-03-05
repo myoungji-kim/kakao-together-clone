@@ -39,8 +39,10 @@ public class WriteActionServlet extends HttpServlet {
 		String tag3 = request.getParameter("tag3");
 		String writer = request.getParameter("writer");
 		String subtopic = "";
+		String pricestate = "";
 		String enddate = request.getParameter("enddate");
 		if (topic.equals("1")) subtopic = request.getParameter("subtopic");
+		if (topic.equals("2")) pricestate = request.getParameter("pricestate");
 		BoardService service = new BoardServiceImpl();
 		
 		if (cate.equals("fund")) {
@@ -52,6 +54,7 @@ public class WriteActionServlet extends HttpServlet {
 						BoardDTO boardDTO = new BoardDTO(topic, title, agency, Integer.parseInt(price), image0, head1, body1,
 								image1, youtube1, tag1, tag2, tag3, Integer.parseInt(writer), subtopic, cate);
 						num = service.insertNow(boardDTO);
+						next = "/fund/now?sort=1";
 
 					// update
 					} else if (mode.equals("update")) {
@@ -59,21 +62,37 @@ public class WriteActionServlet extends HttpServlet {
 								image0, head1, body1, image1, youtube1, tag1, tag2, tag3, Integer.parseInt(writer),
 								subtopic, cate);
 						num = service.updateNow(boardDTO);
+						next = "/fund/now/content?idx="+Integer.parseInt(idx);
 					}
-					next = "/fund/now?sort=1";
 				} catch (Exception e) {
 					next = "/Error500";
 					e.printStackTrace();
 				}
 
 			} else if (topic.equals("2")) { // epilogue - 모금후기
-				next = "/fundraising/epil";
-				System.out.println("2번으로 들어옴");
-			} else if (topic.equals("3")) { // campaign - 나눔캠페인
-				next = "/fundraising/campaign";
-				System.out.println("3번으로 들어옴");
-
-			}
+				int num = 0;
+				// insert
+				try {
+					BoardDTO boardDTO = new BoardDTO();
+					if (mode.equals("insert")) {
+						boardDTO.setInsertEpil(topic, title, agency, Integer.parseInt(price), Integer.parseInt(pricestate), image0, head1, 
+								body1, image1, youtube1, tag1, tag2, tag3, Integer.parseInt(writer), cate);
+						num = service.insertEpil(boardDTO);
+						next = "/fund/epil?sort=1";
+					} else if (mode.equals("update")) {
+						boardDTO.setUpdateEpil(Integer.parseInt(idx), topic, title, agency, 
+								Integer.parseInt(price), Integer.parseInt(pricestate), 
+								image0, head1, body1, image1, youtube1, tag1, tag2, tag3, 
+								Integer.parseInt(writer), cate);
+						num = service.updateEpil(boardDTO);
+						next = "/fund/epil/content?idx="+Integer.parseInt(idx);
+					}
+					
+				} catch (Exception e) {
+					next = "/Error500";
+					e.printStackTrace();
+				}
+			} 
 
 		} else if (cate.equals("prom")) {
 			try {

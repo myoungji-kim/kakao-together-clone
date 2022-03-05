@@ -15,10 +15,15 @@ public interface BoardService {
 	// Now
 	public List<BoardDTO> selectAllNow(HashMap<String, Object> map) throws Exception;
 	public BoardDTO selectNowContent(HashMap<String, Object> map) throws Exception;
-	public String selectNowContentTag(String code) throws Exception;
+	public String selectContentTag(String code) throws Exception;
 	public int insertNow(BoardDTO dto) throws Exception;
 	public int updateNow(BoardDTO dto) throws Exception;
 	
+	// Epil
+	public int insertEpil(BoardDTO dto) throws Exception;
+	public List<BoardDTO> selectAllEpil(HashMap<String, Object> map) throws Exception;
+	public BoardDTO selectEpilContent(HashMap<String, Object> map) throws Exception;
+	public int updateEpil(BoardDTO dto) throws Exception;
 	
 	// Prom
 	public List<BoardDTO> selectAllProm(HashMap<String, Object> map) throws Exception;

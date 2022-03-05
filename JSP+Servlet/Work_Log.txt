@@ -1,10 +1,5 @@
 	
 	[To Do]
-	
-	- 댓글 코멘트 추가
-	- 모금후기 게시판 html
-	- 모금후기 페이징  
-	
 	- fileUpload 적용하기 (이미지 업로드)
 		=> lib에 jar 추가
 			: fileupload (commons-fileupload-1.4.jar, commons-fileupload-1.2.2.jar)
@@ -18,6 +13,12 @@
 	
 	
 	[Success]
+	
+	(03/04)
+	- 비동기 jquery ajax로 수정
+	- 모금후기(Epilogue) insert 구현
+	- 모금후기 게시판 html
+	- 댓글 코멘트 추가
 	
 	(03/03)
 	- 마이페이지 내 기부에서 확인
