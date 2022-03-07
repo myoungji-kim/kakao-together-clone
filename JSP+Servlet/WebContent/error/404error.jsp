@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../include/header.jsp" %>
+<%@ include file="../include/top.jsp" %>
 
-<div style="width: 600px; margin: 100px auto; text-align:center; font-family: KakaoBold; font-size: 30px; color: #555;">
+<div style="width: 600px; padding: 150px; margin:auto; text-align:center; font-family: KakaoBold; font-size: 30px; color: #555;">
 	<img style="width:100%; border-radius:30px; over-flow:hidden;" src="${imgSrc }/404error.jpg">
 	<div style="margin-top: 20px;">
 		<span>해당 페이지는 준비 중입니다</span><br>
