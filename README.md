@@ -5,4 +5,5 @@
 <br><br>
 
 2022.02.18.~ 개발 진행 중 <br>
+1차 개발 : 02.18.~03.04.
 ![image](https://user-images.githubusercontent.com/66910643/156864540-6281034d-b553-45b2-a947-945dd9c01398.png)
