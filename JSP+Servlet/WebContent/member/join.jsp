@@ -12,7 +12,7 @@
 		}
 		
 		// 전화번호
-		if ($('[name=post]').val()=="" || $('[name=addr1]').val()=="" || $('[name=addr2]').val()=="") {
+		if ($('[name=phone1]').val()=="" || $('[name=phone2]').val()=="" || $('[name=phone3]').val()=="") {
 			mesg = "전화번호, "+mesg;
 		}
 		
